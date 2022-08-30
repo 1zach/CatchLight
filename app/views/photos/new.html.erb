@@ -1,3 +1,15 @@
 <h1>Make a new photo</h1>
 
 <%= current_user.username%>
+
+<%= simple_form_for(@photo) do |f| %>
+
+  <%= f.input :photo, as: :file %>
+  <%= f.input :creation_date_time %>
+  <%= f.input :focal_length %>
+  <%= f.input :camera %>
+  <%= f.input :aperture %>
+  <%= f.input :lens %>
+  <%= f.input :location %>
+  <%= f.button :submit %>
+<% end %>

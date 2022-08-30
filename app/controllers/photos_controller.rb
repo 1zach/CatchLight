@@ -24,6 +24,7 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.user = current_user
+    @photo.creator = current_user.first_name
     if @photo.save
       redirect_to photo_path(@photo)
     else
@@ -51,6 +52,7 @@ end
   end
 
   def photo_params
-    params.require(:photo).permit(:url, :creation_date_time, :creator, :location, :focal_length, :camera, :aperture, :lens)
+    params.require(:photo).permit(:url, :photo, :creation_date_time, :creator, :location, :focal_length, :camera, :aperture, :lens)
   end
+
 end
