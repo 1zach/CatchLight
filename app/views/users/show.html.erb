@@ -1,0 +1,13 @@
+<% if @user.username == current_user.username%>
+
+<h1><%= @user.username %></h1>
+
+<%= link_to "Add a photo", new_user_photo_path(current_user)%>
+
+<%= link_to "Edit your profile", edit_user_registration_path(current_user)%>
+
+<% else%>
+
+<p> You are not authorized to view this page</p>
+
+<%end%>
