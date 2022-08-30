@@ -2,6 +2,7 @@ class PhotosController < ApplicationController
   before_action :set_photos, only: [:show, :edit, :update, :destroy]
 
 
+
   def index
     @photos = Photo.all
     # The `geocoded` scope filters only flats with coordinates
