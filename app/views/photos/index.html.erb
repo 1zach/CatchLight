@@ -1,6 +1,11 @@
 <h1>Working</h1>
 
-<ul>
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  
+  <ul>
   <% @photos.each do |photo| %>
       <li><%= photo.creator %></li>
       <li><img width="200" height="200" src="<%=photo.url%>" alt=""></li>

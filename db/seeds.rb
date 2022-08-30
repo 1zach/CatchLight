@@ -1,3 +1,4 @@
+
 require "open-uri"
 
 puts "Cleaning database ...."
@@ -124,3 +125,4 @@ Bookmark.all.each do |bookmark|
 end
 
 puts "#{Bookmark.all.count} bookmarks"
+
