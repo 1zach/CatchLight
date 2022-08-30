@@ -1,5 +1,13 @@
 <h1>Working</h1>
 
+
+
+<% @photos.each do |photo| %>
+    
+    <%=image_tag photo.url%>
+    
+<%end%>
+
 <div style="width: 100%; height: 600px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
@@ -11,3 +19,4 @@
       <li><img width="200" height="200" src="<%=photo.url%>" alt=""></li>
   <% end %>
 </ul>
+
