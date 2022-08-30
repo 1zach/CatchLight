@@ -4,14 +4,22 @@ class PhotosController < ApplicationController
 
 
   def index
+   if params[:location].present? # && params[:creation_date_time].present?
+    #change the location into longitude and lattitude
+    #add a range of closeness to the longitude and lattitude
+    #add the creation_date_time as a parameter
+    #
+    @photos = Photo.where("location ILIKE ? AND creation_date_time ILIKE ?", "#{params[:location]}, ""#{params[:creation_date_time]}")
+   else
     @photos = Photo.all
+    end
     # The `geocoded` scope filters only flats with coordinates
     @markers = @photos.geocoded.map do |photo|
       {
         lat: photo.latitude,
         lng: photo.longitude
       }
-    end
+      end
   end
 
   def show

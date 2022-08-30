@@ -1,15 +1,14 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= form_with url: root_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :location,
-    params[:location],
-    class: "form-control",
-    placeholder: "Location"
-  %>
-  <%= text_field_tag :creation_date_time,
-    params[:creation_date_time],
-    class: "form-control",
-    placeholder: "Location"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+  <div class="search-box"></div>
+    <h1>Pages#home</h1>
+    <p>Find me in app/views/pages/home.html.erb</p>
+    <%= form_with url: photos_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :location,
+        params[:location],
+        class: "form-control",
+        placeholder: "Location"
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
