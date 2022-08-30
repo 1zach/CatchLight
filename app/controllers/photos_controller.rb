@@ -1,9 +1,9 @@
 class PhotosController < ApplicationController
     before_action :set_photos, only: [:show, :edit, :update, :destroy]
-    
-    
+
+
     def index
-        @photo = Photo.all
+        @photos = Photo.all
     end
 
     def show

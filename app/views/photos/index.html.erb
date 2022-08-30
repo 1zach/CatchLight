@@ -1,1 +1,8 @@
 <h1>Working</h1>
+
+<ul>
+  <% @photos.each do |photo| %>
+      <li><%= photo.creator %></li>
+      <li><img width="200" height="200" src="<%=photo.url%>" alt=""></li>
+  <% end %>
+</ul>
