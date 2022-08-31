@@ -173,15 +173,12 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.4.3)
-<<<<<<< HEAD
-=======
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
     pry-byebug (3.10.1)
       byebug (~> 11.0)
       pry (>= 0.13, < 0.15)
->>>>>>> main
     public_suffix (5.0.0)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -302,10 +299,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
-<<<<<<< HEAD
-=======
   pry-byebug
->>>>>>> main
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
   sassc-rails
