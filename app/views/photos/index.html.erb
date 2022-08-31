@@ -1,4 +1,4 @@
-<h1>Working</h1>
+
 
 
 
@@ -11,18 +11,24 @@
 <%#end%>
 
 <%#=@photo%>
-
+<div class="container">
+<h1>Your Results</h1>
 <div style="width: 100%; height: 600px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 
-<ul>
-  <% @photos.each do |photo| %>
-  <div class="window-card">
-    <li><%= photo.creator %> / <%= photo.creation_date_time %> / <%= photo.location %></li>
-    <li><%= display_photo(photo) %></li>
-  </div>
+
+  <ul class = "image-gallery">
+   <% @photos.each do |photo| %>
+    <li>
+      <%=display_photo(photo)%>
+     </li>
+     <!--<li><%= photo.creator %> / <%= photo.creation_date_time %> / <%= photo.location %></li>
+     <li><%= display_photo(photo) %></li>-->
+
   <% end %>
-</ul>
+  </div>
+  </div>
+
