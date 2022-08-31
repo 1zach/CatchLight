@@ -17,10 +17,12 @@
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   
-  <ul>
+  <!--<ul>
   <% @photos.each do |photo| %>
+    <%=link_to photo.url do%>
       <li><%= photo.creator %></li>
       <li><img width="200" height="200" src="<%=photo.url%>" alt=""></li>
+      <%end%>
   <% end %>
-</ul>
+</ul>-->
 

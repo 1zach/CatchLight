@@ -11,21 +11,23 @@ class PhotosController < ApplicationController
         @photo = get_flickr_photo()
         # @photos = flickr_photos
         # This might break the app - if so, reset @photos to Photo.all and we'll add the flickr_photos another way
-    @photos = flickr_photos
-    # The `geocoded` scope filters only photos with coordinates
-    #@markers = @photos.geocoded.map do |photo|
-    #   
-    #  {
-    #      
-    #    lat: photo.latitude,
-    #    lng: photo.longitude
-    #  }
-    #end
+        @photos = flickr_photos
+        # The `geocoded` scope filters only photos with coordinates
+        #@markers = @photos.geocoded.map do |photo|
+        #   
+        #  {
+        #      
+        #    lat: photo.latitude,
+        #    lng: photo.longitude
+        #  }
+        #end
 
     @markers = flickr_photos.map do |photo|
         {
             lat: photo.latitude,
-            lng: photo.longitude
+            lng: photo.longitude,
+            url: photo.url,
+            info_window: render_to_string(partial: "info_window", locals: {photo: photo})
         }
       
     end
@@ -70,7 +72,14 @@ end
 
     def get_flickr_photos
         flickr = Flickr.new(ENV["FLICKR_API_KEY"], ENV["FLICKR_SHARED_SECRET"])
-        flickr_response = flickr.photos.search(has_geo: 1, lat: 50.846800, lon: 4.352400, geo_context: 2, accuracy: 16, text: "graffiti", extras: "geo, date_taken")
+        flickr_response = flickr.photos.search(
+            has_geo: 1, 
+            lat: 50.846800, 
+            lon: 4.352400, 
+            geo_context: 2, 
+            accuracy: 16, 
+            text: "graffiti", 
+            extras: "geo, date_taken, owner_name")
         flickr_photos = flickr_response.map do |flickr_photo|
             flickr_url = "https://live.staticflickr.com/#{flickr_photo.server}/#{flickr_photo.id}_#{flickr_photo.secret}.jpg"
             Photo.new(
@@ -79,7 +88,8 @@ end
                     location: [flickr_photo.latitude.to_f, flickr_photo.longitude.to_f], 
                     latitude: flickr_photo.latitude.to_f, 
                     longitude: flickr_photo.longitude.to_f,
-                    creation_date_time: flickr_photo.datetaken
+                    creation_date_time: flickr_photo.datetaken,
+                    creator: flickr_photo.ownername
                 )
         end
         flickr_photos
