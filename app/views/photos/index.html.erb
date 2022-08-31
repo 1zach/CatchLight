@@ -3,11 +3,11 @@
 
 
 <%# @photos.each do |photo| %>
-    
+
     <%# if photo.creation_date_time%>
     <%#=photo.creation_date_time%>
     <%#end%>
-    
+
 <%#end%>
 
 <%#=@photo%>
@@ -21,9 +21,6 @@
   <ul>
   <% @photos.each do |photo| %>
       <li><%= photo.creator %> / <%= photo.creation_date_time %> / <%= photo.location %></li>
-      <%= link_to photo_path(photo) do %>
-        <li><%= display_photo(photo) %></li>
-      <% end %>
+      <li><%= display_photo(photo) %></li>
   <% end %>
 </ul>
-
