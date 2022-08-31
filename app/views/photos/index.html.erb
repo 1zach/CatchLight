@@ -15,12 +15,14 @@
 <div style="width: 100%; height: 600px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
 
-
-  <ul>
+<ul>
   <% @photos.each do |photo| %>
-      <li><%= photo.creator %> / <%= photo.creation_date_time %> / <%= photo.location %></li>
-      <li><%= display_photo(photo) %></li>
+  <div class="window-card">
+    <li><%= photo.creator %> / <%= photo.creation_date_time %> / <%= photo.location %></li>
+    <li><%= display_photo(photo) %></li>
+  </div>
   <% end %>
 </ul>
