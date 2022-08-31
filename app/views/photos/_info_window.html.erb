@@ -1,0 +1,5 @@
+<h2><%=photo.creator%><h2>
+<p><%=photo.creation_date_time.strftime("%B %e, %Y")%></p>
+<p><%=photo.creation_date_time.strftime("%l:%M %p")%></p>
+
+<%=image_tag photo.url, class: "popup-photo"%>
