@@ -1,12 +1,21 @@
 
 class PhotosController < ApplicationController
-
     require 'flickr'
     skip_before_action :authenticate_user!, only: [:index, :show]
 
     before_action :set_photos, only: [:show, :edit, :update, :destroy]
 
   def index
+      if params[:location].present? && params[:creation_date_time].present?
+        creation_date_time = params[:creation_date_time].to_date
+        @photos = Photo.near(params[:location], params[:distance] || 10, order: :distance).where("photos.creation_date_time = ?", creation_date_time)
+        #add the creation_date_time as a parameter
+        #@photos = Photo.where("location ILIKE ?", "#{params[:location]}")
+      else
+        @photos = Photo.all
+      end
+    
+    
         flickr_photos = get_flickr_photos()
         @photo = get_flickr_photo()
         # @photos = flickr_photos
