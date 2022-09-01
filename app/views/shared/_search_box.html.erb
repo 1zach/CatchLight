@@ -2,12 +2,14 @@
 
   <div class="date-month">
     <%= form_with url: photos_path, method: :get, class: "d-flex" do %>
-      <!--<label for="location">  <i class="fa-sharp fa-solid fa-location-dot"></i></label>-->
+      <label for="location">  <i class="fa-sharp fa-solid fa-location-dot"></i></label>
       <%= text_field_tag :query_location,
         params[:query_location],
         class: "form-control",
         placeholder: "Location"
       %>
+  </div>
+  <div>
       <label for="location"> <i class="fa-regular fa-calendar"></i></label>
       <select name="query_month" id="month">
         <option value="01">Jan</option>
@@ -25,7 +27,14 @@
       </select>
   </div>
 
-  <div class="time-in-day">
+  <div class = "range_slider" data-controller = "slider" data-action = "input->slider#bubble">
+    <input type = "range" name="query_radius" id ="radius"
+      min=".5" max="5" step = ".5" default = ".5" >
+      <!--Bubble for slider if someone can teach us JS, lol><output class="bubble"  data-slider-target = "bubble"></output>-->
+      <label for="radius">Search Radius</label>
+  </div>
+
+  <%# <div class="time-in-day">
     <input type="button" id="timeline1" value="morning">
     <label for="6AM-9AM"></label><br>
 
@@ -34,7 +43,7 @@
 
     <input type="button" id="timeline1" value="night-time">
     <label for="6AM-9AM"></label><br>
-  </div>
+  </div> %>
 
     <%= submit_tag "Search", class: "btn-black" %>
   <% end %>
