@@ -16,7 +16,7 @@ class PhotosController < ApplicationController
        until flickr_photos.count >= 20 do
         start_date = "#{year}-#{month}-01"
         end_date = "#{year}-#{month}-28"
-        flickr_photos += get_flickr_photos(new_location.first.data["lat"], new_location.first.data["lon"], text, start_date, end_date, radius)
+        flickr_photos += get_flickr_photos(new_location.first.data["lat"], new_location.first.data["lon"], text, start_date, end_date)
         year -= 1
        if year == 1995
         break
