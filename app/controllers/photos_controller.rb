@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
   require 'flickr'
   skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :authenticate_user!, only: :toggle_favorite
   before_action :set_photos, only: %i[show edit update destroy]
 
   def index
@@ -52,6 +53,12 @@ class PhotosController < ApplicationController
   def destroy
     @photo.destroy
     redirect_to photos_path, status: :see_other
+  end
+
+  def toggle_favorite
+    @photo = Photo.find_by(id: params[:id])
+    current_user.favorited?(@photo) ? current_user.unfavorite(@photo) : current_user.favorite(@photo)
+    redirect_to photo_path(@photo), status: :see_other
   end
 
   private

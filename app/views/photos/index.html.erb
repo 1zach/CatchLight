@@ -1,16 +1,4 @@
 
-
-
-
-<%# @photos.each do |photo| %>
-
-    <%# if photo.creation_date_time%>
-    <%#=photo.creation_date_time%>
-    <%#end%>
-
-<%#end%>
-
-<%#=@photo%>
 <div class="container">
 <h1>Your Results</h1>
 <div style="width: 100%; height: 600px;"
@@ -23,12 +11,11 @@
   <ul class = "image-gallery">
    <% @photos.each do |photo| %>
     <li>
+    <%= link_to  photo_path(photo) do %>
       <%=display_photo(photo)%>
+    <% end %>
      </li>
-     <!--<li><%= photo.creator %> / <%= photo.creation_date_time %> / <%= photo.location %></li>
-     <li><%= display_photo(photo) %></li>-->
 
   <% end %>
   </div>
   </div>
-
