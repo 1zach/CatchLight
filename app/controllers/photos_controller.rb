@@ -11,18 +11,18 @@ class PhotosController < ApplicationController
       text = params[:query_location]
       year = 2021
       month = Date.parse(params[:query_date]).mon
-      
-      
-      
+
+
+
       flickr_photos = []
        until flickr_photos.count >= 20 do
         start_date = "#{year}-#{month}-01"
-        end_date = "#{year}-#{month}-28" 
+        end_date = "#{year}-#{month}-28"
          flickr_photos += get_flickr_photos(new_location.first.data["lat"], new_location.first.data["lon"], text, start_date, end_date)
-        
-        
+
+
         year -= 1
-        
+
         puts "end of loop #{year}"
         puts flickr_photos
         puts flickr_photos.count
@@ -61,14 +61,6 @@ class PhotosController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit
-  end
-
-  def update
-    @photo.update(photo_params)
-    redirect_to photo_path(@photo)
   end
 
   def destroy
