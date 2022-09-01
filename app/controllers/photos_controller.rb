@@ -1,13 +1,35 @@
 class PhotosController < ApplicationController
   require 'flickr'
   skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :authenticate_user!, only: :toggle_favorite
   before_action :set_photos, only: %i[show edit update destroy]
 
   def index
     if params[:query_location].present? && params[:query_date].present?
       catch_light_photos = get_catch_light_photos(params[:query_location], params[:query_date])
       new_location = Geocoder.search(params[:query_location])
-      flickr_photos = get_flickr_photos(new_location.first.data["lat"], new_location.first.data["lon"])
+      text = params[:query_location]
+      year = 2021
+      month = Date.parse(params[:query_date]).mon
+      
+      
+      
+      flickr_photos = []
+       until flickr_photos.count >= 20 do
+        start_date = "#{year}-#{month}-01"
+        end_date = "#{year}-#{month}-28" 
+         flickr_photos += get_flickr_photos(new_location.first.data["lat"], new_location.first.data["lon"], text, start_date, end_date)
+        
+        
+        year -= 1
+        
+        puts "end of loop #{year}"
+        puts flickr_photos
+        puts flickr_photos.count
+        if year == 1995
+        break
+        end
+      end
       @photos = flickr_photos + catch_light_photos
     else
      @photos = Photo.all
@@ -54,6 +76,12 @@ class PhotosController < ApplicationController
     redirect_to photos_path, status: :see_other
   end
 
+  def toggle_favorite
+    @photo = Photo.find_by(id: params[:id])
+    current_user.favorited?(@photo) ? current_user.unfavorite(@photo) : current_user.favorite(@photo)
+    redirect_to photo_path(@photo), status: :see_other
+  end
+
   private
 
   def set_photos
@@ -69,7 +97,7 @@ class PhotosController < ApplicationController
   end
 
 
-  def get_flickr_photos(latitude, longitude)
+  def get_flickr_photos(latitude, longitude, text, start_date, end_date)
     flickr = Flickr.new(ENV["FLICKR_API_KEY"], ENV["FLICKR_SHARED_SECRET"])
 
     flickr_response = flickr.photos.search(
@@ -80,9 +108,15 @@ class PhotosController < ApplicationController
       accuracy: 16, # Recorded accuracy level of the location information: Street is ~16
       radius: 0.5, # A valid radius used for geo queries
       per_page: 150, #Number of photos shown per page
-      sort: "relevance",
+      content_type: 1,
+      sort: "interestingness-desc",
+      text: text,
+      min_taken_date: start_date,
+      max_taken_date: end_date,
       extras: "geo, date_taken, owner_name"
     )
+
+    #filtered_images = filter_flickr_images(flickr_response)
 
     flickr_response.map do |flickr_photo|
       flickr_url = "https://live.staticflickr.com/#{flickr_photo.server}/#{flickr_photo.id}_#{flickr_photo.secret}.jpg"
@@ -106,4 +140,8 @@ class PhotosController < ApplicationController
   def photo_params
     params.require(:photo).permit(:url, :photo, :creation_date_time, :creator, :location, :focal_length, :camera, :aperture, :lens)
   end
+
+  #def filter_flickr_images(images)
+  #  return filter_flickr_images
+  #end
 end
