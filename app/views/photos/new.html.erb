@@ -4,7 +4,7 @@
 
 <%= simple_form_for(@photo) do |f| %>
 
-  <%= f.input :photo, as: :file %>
+  <%= f.input :photo, as: :file, input_html: { image_metadata: true }  %>
   <%= f.input :creation_date_time %>
   <%= f.input :focal_length %>
   <%= f.input :camera %>

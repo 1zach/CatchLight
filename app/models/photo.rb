@@ -15,4 +15,28 @@ class Photo < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
+
+  def metadata
+    result = Cloudinary::Api.resource("#{Rails.env}/#{self.photo.key}", exif: true)
+    result['exif']
+  end
+
+  def metadata_location
+    long = convert_dms_to_dd(metadata['GPSLongitude'])
+    lat = convert_dms_to_dd(metadata['GPSLatitude'])
+    [lat, long]
+  end
+
+  def metadata_creation_date_time
+    metadata['DateTime']
+  end
+
+  private
+
+  def convert_dms_to_dd(dms)
+    deg = dms.split(", ")[0].to_i
+    min = dms.split(", ")[1].to_i/(dms.split(", ")[1].split('/')[1].to_i)
+    sec = dms.split(", ")[2].to_i/(dms.split(", ")[2].split('/')[1].to_i)
+    deg + (min / 60.0) + (sec / 3600.0)
+  end
 end

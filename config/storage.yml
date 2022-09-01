@@ -1,9 +1,7 @@
 cloudinary:
   service: Cloudinary
   folder: <%= Rails.env %>
-
-
-
+  image_metadata: true
 
 # test:
 #   service: Disk

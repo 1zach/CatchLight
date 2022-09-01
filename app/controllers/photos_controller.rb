@@ -14,9 +14,9 @@ class PhotosController < ApplicationController
         @photos = flickr_photos
         # The `geocoded` scope filters only photos with coordinates
         #@markers = @photos.geocoded.map do |photo|
-        #   
+        #
         #  {
-        #      
+        #
         #    lat: photo.latitude,
         #    lng: photo.longitude
         #  }
@@ -29,7 +29,7 @@ class PhotosController < ApplicationController
             url: photo.url,
             info_window: render_to_string(partial: "info_window", locals: {photo: photo})
         }
-      
+
     end
   end
 
@@ -37,6 +37,11 @@ class PhotosController < ApplicationController
   end
 
   def new
+    result = Cloudinary::Api.resource('nzffwufgbwk2pg6sod8j', exif: true)
+
+    # results = Cloudinary::Uploader.upload('test_photo.HEIC', image_metadata: true)
+
+
     @photo = Photo.new
   end
 
@@ -44,12 +49,13 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     @photo.user = current_user
     @photo.creator = current_user.first_name
+
     if @photo.save
       redirect_to photo_path(@photo)
     else
-    render:new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
-end
+  end
 
   def edit
   end
@@ -74,20 +80,20 @@ end
     def get_flickr_photos
         flickr = Flickr.new(ENV["FLICKR_API_KEY"], ENV["FLICKR_SHARED_SECRET"])
         flickr_response = flickr.photos.search(
-            has_geo: 1, 
-            lat: 50.846800, 
-            lon: 4.352400, 
-            geo_context: 2, 
-            accuracy: 16, 
-            text: "graffiti", 
+            has_geo: 1,
+            lat: 50.846800,
+            lon: 4.352400,
+            geo_context: 2,
+            accuracy: 16,
+            text: "graffiti",
             extras: "geo, date_taken, owner_name")
         flickr_photos = flickr_response.map do |flickr_photo|
             flickr_url = "https://live.staticflickr.com/#{flickr_photo.server}/#{flickr_photo.id}_#{flickr_photo.secret}.jpg"
             Photo.new(
-                    url: flickr_url, 
+                    url: flickr_url,
                     user: User.last,
-                    location: [flickr_photo.latitude.to_f, flickr_photo.longitude.to_f], 
-                    latitude: flickr_photo.latitude.to_f, 
+                    location: [flickr_photo.latitude.to_f, flickr_photo.longitude.to_f],
+                    latitude: flickr_photo.latitude.to_f,
                     longitude: flickr_photo.longitude.to_f,
                     creation_date_time: flickr_photo.datetaken,
                     creator: flickr_photo.ownername
@@ -109,6 +115,3 @@ end
 
 
 end
-
-
-
