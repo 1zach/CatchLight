@@ -1,6 +1,6 @@
 .banner {
 
-  background-image: asset-url("banner.jpg");
+  background-image: asset-url("banner.jpg") !important;
   background-size: cover;
   height: 75vh;
   display: flex;
