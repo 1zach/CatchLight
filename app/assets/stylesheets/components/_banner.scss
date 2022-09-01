@@ -3,8 +3,10 @@
     background-position: center;
     padding: 150px 0;
     background-image: url("/app/assets/images/DSC_3244.jpg");
+    position: relative;
+    z-index: 1;
   }
-  
+
   .banner h1 {
     margin: 0;
     color: white;
@@ -12,7 +14,7 @@
     font-size: 32px;
     font-weight: bold;
   }
-  
+
   .banner p {
     font-size: 20px;
     color: white;
