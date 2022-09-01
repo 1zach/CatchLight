@@ -10,6 +10,7 @@ class PhotosController < ApplicationController
       new_location = Geocoder.search(params[:query_location])
       text = params[:query_location]
       year = 2021
+
       month = (params[:query_month])
       flickr_photos = []
        until flickr_photos.count >= 20 do
@@ -17,7 +18,7 @@ class PhotosController < ApplicationController
         end_date = "#{year}-#{month}-28" 
         flickr_photos += get_flickr_photos(new_location.first.data["lat"], new_location.first.data["lon"], text, start_date, end_date)
         year -= 1
-        if year == 1995
+       if year == 1995
         break
         end
       end
@@ -52,14 +53,6 @@ class PhotosController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit
-  end
-
-  def update
-    @photo.update(photo_params)
-    redirect_to photo_path(@photo)
   end
 
   def destroy
