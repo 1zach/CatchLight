@@ -5,34 +5,26 @@ class PhotosController < ApplicationController
   before_action :set_photos, only: %i[show edit update destroy]
 
   def index
-    if params[:query_location].present? && params[:query_date].present?
-      catch_light_photos = get_catch_light_photos(params[:query_location], params[:query_date])
+    if params[:query_location].present? && params[:query_month].present?
+      catch_light_photos = get_catch_light_photos(params[:query_location], params[:query_month])
       new_location = Geocoder.search(params[:query_location])
       text = params[:query_location]
       year = 2021
-      month = Date.parse(params[:query_date]).mon
 
-
-
+      month = (params[:query_month])
       flickr_photos = []
        until flickr_photos.count >= 20 do
         start_date = "#{year}-#{month}-01"
-        end_date = "#{year}-#{month}-28"
-         flickr_photos += get_flickr_photos(new_location.first.data["lat"], new_location.first.data["lon"], text, start_date, end_date)
-
-
+        end_date = "#{year}-#{month}-28" 
+        flickr_photos += get_flickr_photos(new_location.first.data["lat"], new_location.first.data["lon"], text, start_date, end_date)
         year -= 1
-
-        puts "end of loop #{year}"
-        puts flickr_photos
-        puts flickr_photos.count
-        if year == 1995
+       if year == 1995
         break
         end
       end
       @photos = flickr_photos + catch_light_photos
     else
-     @photos = Photo.all
+      @photos = Photo.all
     end
 
     @markers = @photos.map do |photo|
@@ -80,11 +72,10 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
   end
 
-  def get_catch_light_photos(query_location, query_date, query_distance = 5000)
-    creation_date_time = query_date.to_date
-
+  def get_catch_light_photos(query_location, query_month, query_distance = 100)
     Photo.near(query_location, query_distance, order: :distance)
-         .where("photos.creation_date_time > ?", creation_date_time)
+         .where("SELECT EXTRACT(MONTH FROM creation_date_time) = ?", query_month)
+  
 
   end
 

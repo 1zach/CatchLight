@@ -1,6 +1,11 @@
 .navbar-lewagon {
+  height: 50px;
+  width: 100%;
+  display: flex;
   justify-content: space-between;
   background-color: transparent;
+  position: absolute;
+  z-index: 2;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -11,4 +16,13 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
   opacity: 1 !important;
+}
+
+
+.homepage-navbar{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+
 }
