@@ -1,0 +1,41 @@
+<div class = "search-box" id = "search-box">
+
+  <div class="date-month">
+    <%= form_with url: photos_path, method: :get, class: "d-flex" do %>
+      <label for="location">  <i class="fa-sharp fa-solid fa-location-dot"></i></label>
+      <%= text_field_tag :location,
+        params[:location],
+        class: "form-control",
+        placeholder: "Location"
+      %>
+      <label for="location"> <i class="fa-regular fa-calendar"></i></label>
+      <select name="month" id="month">
+        <option value="Jan">Jan</option>
+        <option value="Feb">Feb</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="Aug">Aug</option>
+        <option value="Sept">Sept</option>
+        <option value="Oct">Oct</option>
+        <option value="Nov">Nov</option>
+        <option value="Dec">Dec</option>
+      </select>
+  </div>
+
+  <div class="time-in-day">
+    <input type="button" id="timeline1" value="morning">
+    <label for="6AM-9AM"></label><br>
+
+    <input type="button" id="timeline1" value="afternoon">
+    <label for="6AM-9AM"></label><br>
+
+    <input type="button" id="timeline1" value="night-time">
+    <label for="6AM-9AM"></label><br>
+  </div>
+
+    <%= submit_tag "Search", class: "btn-black" %>
+  <% end %>
+</div>
