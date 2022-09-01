@@ -11,10 +11,8 @@
   <ul class = "image-gallery">
    <% @photos.each do |photo| %>
     <li>
-    <%= link_to  photo_path(photo) do %>
-      <%=display_photo(photo)%>
-    <% end %>
-     </li>
+    <%=display_photo(photo)%>
+    </li>
 
   <% end %>
   </div>
