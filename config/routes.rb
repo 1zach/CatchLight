@@ -1,19 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
-
   root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get "/about_us" => "pages#about_us"
 
-  
 
-    resources :users, only: :show
-    resources :photos do
+  devise_for :users
+  resources :users, only: :show
+  resources :photos do
+
     resources :bookmarks
-    end
-  
-   
-    #resources :bookmarks, only: :destroy
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  end
 end
