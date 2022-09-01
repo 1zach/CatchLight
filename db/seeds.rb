@@ -1,11 +1,9 @@
-
 require "open-uri"
 
 puts "Cleaning database ...."
 
 Photo.destroy_all
 User.destroy_all
-Bookmark.destroy_all
 
 
 puts "Generating Users ..."
@@ -14,7 +12,7 @@ user1 = User.create(email: "coco@gmail.com", first_name: "Corentin",  username: 
 user2 = User.create(email: "zach@gmail.com", first_name: "Zach",  username: "1zach", password: "123456", photo: "")
 user3 = User.create(email: "steph@gmail.com", first_name: "Stephane", username: "stephasme", password: "123456", photo: "")
 user4 = User.create(email: "tenzayn@gmail.com", first_name: "Tenzayn", username: "tenzayn", password: "123456", photo: "")
-user5 = User.create(email: "ambroise@gmail.com", first_name: "Ambroise", username: "ambbuck", password: "123456", photo: "")
+User.create(email: "ambroise@gmail.com", first_name: "Ambroise", username: "ambbuck", password: "123456", photo: "")
 
 puts "#{User.all.count} users"
 
@@ -104,25 +102,3 @@ Photo.create(url: "https://images.unsplash.com/photo-1619794578892-cbdd3ff81c95?
     puts "Photo de #{photo.creator} avec un #{photo.camera} à #{photo.creation_date_time}"
   end
 puts "#{Photo.all.count} photos"
-
-puts "Generating bookmarks..."
-
-
-Bookmark.create(user_id: user1.id, photo_id: Photo.last.id - rand(5..10))
-Bookmark.create(user_id: user1.id, photo_id: Photo.last.id - rand(1..5))
-
-Bookmark.create(user_id: user2.id, photo_id: Photo.last.id - rand(1..4))
-Bookmark.create(user_id: user2.id, photo_id: Photo.last.id - rand(11..16))
-
-Bookmark.create(user_id: user3.id, photo_id: Photo.last.id - rand(1..4))
-Bookmark.create(user_id: user3.id, photo_id: Photo.last.id - rand(11..16))
-
-Bookmark.create(user_id: user4.id, photo_id: Photo.last.id - rand(5..10))
-Bookmark.create(user_id: user4.id, photo_id: Photo.last.id - rand(11..16))
-
-Bookmark.all.each do |bookmark|
-  puts "photo_id : #{bookmark.photo_id}, user_id : #{bookmark.user_id} "
-end
-
-puts "#{Bookmark.all.count} bookmarks"
-
