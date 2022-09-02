@@ -34,15 +34,10 @@ export default class extends Controller {
       console.log(allMetaData);
 
       camera.value = EXIF.getTag(this, "Model");
-
       creation.value = EXIF.getTag(this, "DateTime");
-
       location.value = EXIF.getTag(this, "GPSLatitude");
-
       aperture.value = EXIF.getTag(this, "ApertureValue");
-
       lens.value = EXIF.getTag(this, "DateTime");
-
       focal_length.value = EXIF.getTag(this, "FocalLength");
     });
 
