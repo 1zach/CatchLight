@@ -27,10 +27,6 @@ class Photo < ApplicationRecord
     [lat, long]
   end
 
-  def metadata_creation_date_time
-    metadata['DateTime']
-  end
-
   private
 
   def convert_dms_to_dd(dms)
