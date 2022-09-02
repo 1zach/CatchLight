@@ -1,14 +1,38 @@
 <h1>Working</h1>
 
 <%if params[:flickr]%>
+
 <%=@flickr.camera%>
+
+<h2>Photo</h2>
+
+<p><%=%><p>
+<p>Focal Length: <%=%></p>
+<p>Aperture: <%=%>
+<p>A photo taken at <%= %>
+
+
+
+<%else%>
+<h2>A photo taken by <%= @photo.creator %></h2>
+<p>Focal length : <%= @photo.focal_length %></p>
+<p>A photo taken at <%= @photo.creation_date_time %></p>
+<p>Camera : <%= @photo.camera %></p>
+<p>Aperture : <%= @photo.aperture %></p>
+<p>Lens : <%= @photo.lens %></p>
+<p>Location : <%= @photo.location %></p>
+
+
+<br>
 <%end%>
+
 
 <br>
 <div class="show-map">
   <div class="user-show-photo">
     <% if @photo.id%>
     <% if current_user == nil %>
+
 
     <% elsif current_user.favorited?(@photo) %>
       <%= button_to toggle_favorite_photo_path(@photo), method: :post, class: 'coeur' do%>
