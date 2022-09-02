@@ -16,7 +16,7 @@ class PhotosController < ApplicationController
        until flickr_photos.count >= 20 do
         start_date = "#{year}-#{month}-01"
 
-        end_date = "#{year}-#{month}-28" 
+        end_date = "#{year}-#{month}-28"
         flickr_photos += get_flickr_photos(new_location.first.data["lat"], new_location.first.data["lon"], text, start_date, end_date, radius)
 
         year -= 1
@@ -48,6 +48,14 @@ class PhotosController < ApplicationController
     else
       set_photo
     end
+    @markers = [
+      {
+        lat: @photo.latitude,
+        lng: @photo.longitude,
+        url: @photo.url,
+        info_window: render_to_string(partial: "info_window", locals: {photo: @photo})
+      }
+    ]
   end
 
   def new
@@ -85,7 +93,7 @@ class PhotosController < ApplicationController
   def get_catch_light_photos(query_location, query_month, query_distance = 100)
     Photo.near(query_location, query_distance, order: :distance)
          .where("SELECT EXTRACT(MONTH FROM creation_date_time) = ?", query_month)
-  
+
 
   end
 
