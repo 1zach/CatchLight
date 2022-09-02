@@ -1,19 +1,10 @@
 
 
-
-
-<%# @photos.each do |photo| %>
-
-    <%# if photo.creation_date_time%>
-    <%#=photo.creation_date_time%>
-    <%#end%>
-
-<%#end%>
-
-<%#=@photo%>
-<div class="container">
-<h1>Your Results</h1>
-<div style="width: 100%; height: 600px;"
+<%#=render "shared/search_box"%>
+<h1>Search: <%=params[:query_location]%> Radius: <%=params[:query_radius]%>km Month: <%=params[:query_month]%></h1>
+<%#=raise%>
+<div class = "d-flex image-map-container" >
+<div style="width: 100%; height: 600px;" class = "map"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -23,11 +14,18 @@
   <ul class = "image-gallery">
    <% @photos.each do |photo| %>
     <li>
-      <%=display_photo(photo)%>
-     </li>
-     <!--<li><%= photo.creator %> / <%= photo.creation_date_time %> / <%= photo.location %></li>
-     <li><%= display_photo(photo) %></li>-->
+    
+      <%if photo.flickr%>
+    <%= link_to photo_path(flickr: true, url: photo.url, id: photo.id) do %>
+      <%= display_photo(photo) %>
+      <%end%>
+      <%else%>
+      <%= link_to photo_path(photo) do%>
+      <%= display_photo(photo)%>
+      <%end%>
+    <% end %>
 
+    </li>
   <% end %>
   </div>
   </div>

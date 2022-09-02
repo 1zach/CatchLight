@@ -1,2 +1,13 @@
 // Specific CSS for your home-page
 
+.header {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-box {
+    align-self: center;
+    transform: translateY(-70px);
+}
+

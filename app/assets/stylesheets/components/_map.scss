@@ -41,3 +41,19 @@
       height: 100px;
       width: 100px;
   }
+
+
+  .show-map {
+    display: flex !important;
+    justify-content: space-around;
+  }
+
+
+  .show-content {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .user-show-photo {
+    display: flex;
+  }
