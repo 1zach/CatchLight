@@ -1,4 +1,9 @@
 <h1>Working</h1>
+<%if params[:flickr]%>
+<%=@flickr.camera%>
+
+
+<%end%>
 <h2>A photo taken by <%= @photo.creator %></h2>
 <p>Focal length : <%= @photo.focal_length %></p>
 <p>A photo taken at <%= @photo.creation_date_time %></p>
