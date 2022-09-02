@@ -128,7 +128,7 @@ class PhotosController < ApplicationController
   end
 
   def get_flickr_additional_information(photo_id)
-    flickr = Flickr.new(ENV["FLICKR_API_KEY"])#, ENV["FLICKR_SHARED_SECRET"])
+    flickr = Flickr.new(ENV["FLICKR_API_KEY"])# ENV["FLICKR_SHARED_SECRET"])
     @flickr = flickr.photos.getExif(photo_id: photo_id)
     #@flickr = flickr.photos.getExif(photo_id.to_i)
   end
