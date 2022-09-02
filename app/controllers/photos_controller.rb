@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   require 'flickr'
   skip_before_action :authenticate_user!, only: %i[index show]
   before_action :authenticate_user!, only: :toggle_favorite
-  before_action :set_photos, only: %i[show edit update destroy]
+  before_action :set_photo, only: %i[ edit update destroy]
 
   def index
     if params[:query_location].present? && params[:query_month].present?
@@ -15,8 +15,10 @@ class PhotosController < ApplicationController
       flickr_photos = []
        until flickr_photos.count >= 20 do
         start_date = "#{year}-#{month}-01"
+
         end_date = "#{year}-#{month}-28" 
         flickr_photos += get_flickr_photos(new_location.first.data["lat"], new_location.first.data["lon"], text, start_date, end_date, radius)
+
         year -= 1
        if year == 1995
         break
@@ -38,6 +40,13 @@ class PhotosController < ApplicationController
   end
 
   def show
+    if params[:flickr]
+      @photo = Photo.new(
+        url: params[:url]
+      )
+    else
+      set_photo
+    end
   end
 
   def new
@@ -68,7 +77,7 @@ class PhotosController < ApplicationController
 
   private
 
-  def set_photos
+  def set_photo
     @photo = Photo.find(params[:id])
   end
 
@@ -104,6 +113,7 @@ class PhotosController < ApplicationController
     flickr_response.map do |flickr_photo|
       flickr_url = "https://live.staticflickr.com/#{flickr_photo.server}/#{flickr_photo.id}_#{flickr_photo.secret}.jpg"
       Photo.new(
+        id: flickr_photo.id,
         url: flickr_url,
         user: User.last,
         location: [flickr_photo.latitude.to_f, flickr_photo.longitude.to_f],

@@ -15,7 +15,9 @@
    <% @photos.each do |photo| %>
     <li>
 
-      <%=display_photo(photo)%>
+    <%= link_to photo_path(flickr: true, url: photo.url, id: photo.id) do %>
+      <%= display_photo(photo) %>
+    <% end %>
 
     </li>
   <% end %>

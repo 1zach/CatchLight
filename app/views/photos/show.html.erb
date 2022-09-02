@@ -9,6 +9,7 @@
 <br>
 
 
+<% if @photo.id%>
 <% if current_user == nil %>
 
 <% elsif current_user.favorited?(@photo) %>
@@ -22,7 +23,7 @@
   <% end %>
   </div>
 <% end %>
-
+<%end%>
 <br>
 <%= display_photo(@photo) %>
 
