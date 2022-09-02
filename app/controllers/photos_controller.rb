@@ -10,13 +10,15 @@ class PhotosController < ApplicationController
       new_location = Geocoder.search(params[:query_location])
       text = params[:query_location]
       year = 2021
-
+      radius = params[:query_radius]
       month = (params[:query_month])
       flickr_photos = []
        until flickr_photos.count >= 20 do
         start_date = "#{year}-#{month}-01"
-        end_date = "#{year}-#{month}-28"
-        flickr_photos += get_flickr_photos(new_location.first.data["lat"], new_location.first.data["lon"], text, start_date, end_date)
+
+        end_date = "#{year}-#{month}-28" 
+        flickr_photos += get_flickr_photos(new_location.first.data["lat"], new_location.first.data["lon"], text, start_date, end_date, radius)
+
         year -= 1
        if year == 1995
         break
@@ -87,7 +89,7 @@ class PhotosController < ApplicationController
   end
 
 
-  def get_flickr_photos(latitude, longitude, text, start_date, end_date)
+  def get_flickr_photos(latitude, longitude, text, start_date, end_date, radius)
     flickr = Flickr.new(ENV["FLICKR_API_KEY"], ENV["FLICKR_SHARED_SECRET"])
 
     flickr_response = flickr.photos.search(
@@ -96,7 +98,7 @@ class PhotosController < ApplicationController
       lon: longitude,
       geo_context: 2, # Geo context outdoors
       accuracy: 16, # Recorded accuracy level of the location information: Street is ~16
-      radius: 0.5, # A valid radius used for geo queries
+      radius: radius, # A valid radius used for geo queries
       per_page: 150, #Number of photos shown per page
       content_type: 1,
       sort: "interestingness-desc",

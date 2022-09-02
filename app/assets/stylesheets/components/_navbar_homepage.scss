@@ -1,0 +1,19 @@
+.navbar-homepage {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  position: absolute;
+  z-index: 2;
+}
+
+.navbar-homepage .navbar-collapse {
+  flex-grow: 0;
+  opacity: 1 !important;
+}
+
+.navbar-homepage .navbar-brand img {
+  width: 40px;
+  opacity: 1 !important;
+}
