@@ -8,7 +8,7 @@ export default class extends Controller {
 
   bubble(e) {
     
-    console.log("WHTAT THE FUCK SI INEH OREJI")
+    console.log("")
   const val = 10;
   //const min = range.min ? range.min : 0;
   //const max = range.max ? range.max : 5;
