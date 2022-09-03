@@ -10,9 +10,11 @@
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
     data-resizer-target = "left">
   </div>
-<div  data-action = "mousedown->resizer#resize mousemove->resizer#mouseMoveHandler" data-resizer-target = "center">
+
+<div  data-action = "mousedown->resizer#resize mousemove->resizer#mouseMoveHandler" data-resizer-target = "center" style = "cursor: col-resize">
+
 </div>
-  <ul class = "image-gallery" data-resizer-target = "right">
+  <ul class = "image-gallery" data-resizer-target = "right" >
     <% @photos.each do |photo| %>
       <li>
       <%if photo.flickr%>
