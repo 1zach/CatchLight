@@ -2,14 +2,15 @@
 //CSS for the whole search box
 .search-box {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 10px;
   flex-direction: row;
   background-color: white;
   border-radius: 20px;
-  width: 60%;
+  
   //height: 15vh;
   box-shadow: $box-shadow;
-  padding: 20px 20px;
+  padding: 20px 40px;
   position: absolute;
   bottom: 77px;
   margin:0 auto; 
@@ -18,8 +19,8 @@
 }
 .fa-calendar, .fa-location-dot  {
   color: $slider;
-  font-size: 32px;
-  padding-right: 5px;
+  //font-size: 24px;
+  //padding-right: 5px;
   //position: absolute;
   //left: 10%;
   -ms-transform: translateY(10%);
@@ -29,6 +30,18 @@
 .fa-location-dot {
   -ms-transform: translateY(10%);
   transform: translateY(10%);
+}
+
+.location-month {
+  display:flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.range-submit {
+  display:flex;
+  flex-direction: row;
+  gap: 5px;
 }
 
 // Not used currently
@@ -59,7 +72,7 @@
   background-color: white;
   color: $slider;
   border-radius: 2px;
-  padding: 10px 20px;
+  padding: 5px 20px;
   text-align: center;
   line-height: normal;
   font-size: 16px;
@@ -184,4 +197,65 @@ input[type=range]:focus::-ms-fill-upper {
   background: red;
   top: -1px;
   left: 50%;
+}
+
+@media (max-width: 700px) {
+  .search-box {
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center !important;
+    height: 250px;
+    gap: 0px;
+    transform: translateY(0px);
+
+    .btn-black {
+      align-self: center;
+    }
+
+    .range_slider {
+      align-self: center;
+    }
+
+    #month {
+      width: 150px;
+      align-self: center;
+    
+
+    }
+
+    .calendar {
+      display: flex;
+    }
+
+    .location-month {
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .range-submit {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .search-box {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    
+  }
+
+  .range-submit {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+  }
+
+  .location-month {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+  }
 }

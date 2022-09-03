@@ -29,3 +29,27 @@
   color: rgb(249, 249, 249);
 }
 
+
+@media (max-width: 1200px) {
+  .half-background {
+      margin: 0;
+      transform: translateY(-15%);
+  }
+}
+
+@media (max-width: 700px) {
+  
+  .banner {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    
+  }
+  .half-background {
+    margin: 0;
+    padding: 0;
+    transform: translateY(-15%);
+    width: 35vh !important;
+  }
+}
+
