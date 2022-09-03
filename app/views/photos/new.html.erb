@@ -1,5 +1,7 @@
 <h1>Make a new photo</h1>
 
+<% keys =  ["make", "model", "orientation", "xresolution", "yresolution", "resolutionunit", "software", "datetime", "undefined", "exififdpointer", "gpsinfoifdpointer", "exposuretime", "fnumber", "exposureprogram", "isospeedratings", "exifversion", "datetimeoriginal", "datetimedigitized", "shutterspeedvalue", "aperturevalue", "brightnessvalue", "exposurebias", "meteringmode", "flash", "focallength", "subjectarea", "makernote", "subsectimeoriginal", "subsectimedigitized", "colorspace", "pixelxdimension", "pixelydimension", "sensingmethod", "scenetype", "exposuremode", "whitebalance", "focallengthin35mmfilm", "gpslatituderef", "gpslatitude", "gpslongituderef", "gpslongitude", "gpsaltituderef", "gpsaltitude", "gpsspeedref", "gpsspeed", "gpsimgdirectionref", "gpsimgdirection", "gpsdestbearingref", "gpsdestbearing", "gpsdatestamp", "thumbnail"]%>
+
 <%= form_with model: @photo, local: true do |form| %>
 
   <div data-controller="image-preview">
@@ -13,54 +15,22 @@
           action: "image-preview#readURL"
         } %>
     </div>
-    <div class="my-2">
-      <%= form.text_field :camera,
+
+
+    <p style="color: red; display: none;" data-image-preview-target="warning">No location on this photo, it is not possible to upload it.</p>
+
+
+    <% keys.each do |key| %>
+      <div class="my-2" style="display: block;">
+      <p><%= key %></p>
+      <%= form.text_field :"#{key}",
         :class => "form-control-file photo_upload",
         data: {
-          image_preview_target: "camera",
+          image_preview_target: "#{key}",
           action: "image-preview#readURL"
         } %>
     </div>
-    <div class="my-2">
-      <%= form.text_field :creation_date_time,
-        :class => "form-control-file photo_upload",
-        data: {
-          image_preview_target: "creation",
-          action: "image-preview#readURL"
-        } %>
-    </div>
-    <div class="my-2">
-      <%= form.text_field :location,
-        :class => "form-control-file photo_upload",
-        data: {
-          image_preview_target: "location",
-          action: "image-preview#readURL"
-        } %>
-    </div>
-    <div class="my-2">
-      <%= form.text_field :aperture,
-        :class => "form-control-file photo_upload",
-        data: {
-          image_preview_target: "aperture",
-          action: "image-preview#readURL"
-        } %>
-    </div>
-    <div class="my-2" style='display: none'>
-      <%= form.text_field :lens,
-        :class => "form-control-file photo_upload",
-        data: {
-          image_preview_target: "lens",
-          action: "image-preview#readURL"
-        } %>
-    </div>
-    <div class="my-2">
-      <%= form.text_field :focal_length,
-        :class => "form-control-file photo_upload",
-        data: {
-          image_preview_target: "focal_length",
-          action: "image-preview#readURL"
-        } %>
-    </div>
+    <% end %>
   </div>
 
   <div>
