@@ -29,11 +29,12 @@
 </div>
 <div class = "range-submit">
   <div class = "range_slider" data-controller = "slider" data-action = "input->slider#bubble">
-     <input type = "range" name="query_radius" id ="radius"
-      min=".5" max="5" step = ".5" default = ".5" > 
-      <!--Bubble for slider if someone can teach us JS, lol><output class="bubble"  data-slider-target = "bubble"></output>-->
-      <label for="radius">.5km to 5km</label>
-  </div> 
+    <input type = "range" name="query_radius" id ="radius"
+      min=".5" max="5.0" step = ".5" default = ".5" data-slider-target = "range">
+      <label for="radius"></label>
+      <output class="bubble"  data-slider-target = "bubble">Search Radius: 2.5 km</output>
+  </div>
+
 
   <%# <div class="time-in-day">
     <input type="button" id="timeline1" value="morning">
