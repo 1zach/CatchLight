@@ -26,14 +26,14 @@ export default class extends Controller {
     console.log(leftWidth)
 
     mouseMoveHandler();
-    mouseMoveHandler(e) {
+    // mouseMoveHandler(e) {
       
-      console.log("THis works")
-      const dx = e.clientX - x;
-      const dy = e.clientY - y;
-      const newLeftWidth = ((leftWidth + dx) * 100 / resizer.parent.getBoundingClientRect().width);
-      left.style.width = `${newLeftWidth}%`;
-    }
+    //   console.log("THis works")
+    //   const dx = e.clientX - x;
+    //   const dy = e.clientY - y;
+    //   const newLeftWidth = ((leftWidth + dx) * 100 / resizer.parent.getBoundingClientRect().width);
+    //   left.style.width = `${newLeftWidth}%`;
+    // }
 
   }
 
