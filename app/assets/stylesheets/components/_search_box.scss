@@ -18,6 +18,31 @@
   z-index: 100;
   font-family: 'Roboto Mono', monospace;
 }
+
+#index-search-box {
+  position: relative;
+  top: 125px;
+  width: 95%;
+  background-color: rgba(255, 255, 255, 0.437);
+  flex-direction: column;
+
+  .form-control {
+    width: 100px;
+    background-color: inherit;
+  }
+
+  .location-month {
+    align-items: center;
+  }
+  .btn-black {
+    padding: 5px 8px;
+    border-radius: 3px;
+    background-color: inherit;
+  }
+  
+}
+
+
 .fa-calendar, .fa-location-dot  {
   color: $slider;
   //font-size: 24px;
