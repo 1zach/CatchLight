@@ -6,18 +6,17 @@ export default class extends Controller {
   connect() {
   }
 
-  bubble(e) {
-
-    console.log("")
-  const val = 10;
-  //const min = range.min ? range.min : 0;
-  //const max = range.max ? range.max : 5;
-  //const newVal = Number(((val - min) * 100) / (max - min));
-  this.bubbleTarget.innerHTML = val;
+  bubble() {
+  console.log("hey")
+  const val = this.rangeTarget.value;
+  const min = this.rangeTarget.min ? this.rangeTarget.min : 0.5;
+  const max = this.rangeTarget.max ? this.rangeTarget.max : 5.0;
+  const newVal = Number(((val - min) * 100) / (max - min));
+  this.bubbleTarget.innerHTML = `Search Radius: ${parseFloat(val).toFixed(1)} km`;
 
   // Sorta magic numbers based on size of the native UI thumb
-  //bubble.style.left = newVal = "%";
+  //this.bubbleTarget.style.left = newVal = "%";
 
-  bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
+  //this.rangeTarget.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
   }
 }
