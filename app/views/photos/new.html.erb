@@ -1,5 +1,6 @@
 <h1>Make a new photo</h1>
 
+
 <% keys =  ["make", "model", "orientation", "xresolution", "yresolution", "resolutionunit", "software", "datetime", "undefined", "exififdpointer", "gpsinfoifdpointer", "exposuretime", "fnumber", "exposureprogram", "isospeedratings", "exifversion", "datetimeoriginal", "datetimedigitized", "shutterspeedvalue", "aperturevalue", "brightnessvalue", "exposurebias", "meteringmode", "flash", "focallength", "subjectarea", "makernote", "subsectimeoriginal", "subsectimedigitized", "colorspace", "pixelxdimension", "pixelydimension", "sensingmethod", "scenetype", "exposuremode", "whitebalance", "focallengthin35mmfilm", "gpslatituderef", "gpslatitude", "gpslongituderef", "gpslongitude", "gpsaltituderef", "gpsaltitude", "gpsspeedref", "gpsspeed", "gpsimgdirectionref", "gpsimgdirection", "gpsdestbearingref", "gpsdestbearing", "gpsdatestamp", "thumbnail"]%>
 
 <%= form_with model: @photo, local: true do |form| %>
@@ -19,7 +20,7 @@
 
     <p style="color: red; display: none;" data-image-preview-target="warning">No location on this photo, it is not possible to upload it.</p>
 
-
+    <%= f.input :trip %>
     <% keys.each do |key| %>
       <div class="my-2" style="display: block;">
       <p><%= key %></p>
@@ -37,3 +38,4 @@
     <%= form.submit %>
   </div>
   <% end %>
+

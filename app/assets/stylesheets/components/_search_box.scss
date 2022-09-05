@@ -13,7 +13,7 @@
   padding: 20px 40px;
   position: absolute;
   bottom: 77px;
-  margin:0 auto; 
+  margin:0 auto;
   align-items: center;
   z-index: 100;
   font-family: 'Roboto Mono', monospace;
@@ -226,6 +226,7 @@ input[type=range]:focus::-ms-fill-upper {
  // position: absolute;
   width: 2px;
   height: 2px;
+
 
   background: $slider;
   //top: -1px;
