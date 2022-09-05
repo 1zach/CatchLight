@@ -7,7 +7,7 @@ export default class extends Controller {
   }
 
   bubble(e) {
-    
+
     console.log("")
   const val = 10;
   //const min = range.min ? range.min : 0;
