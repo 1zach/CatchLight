@@ -1,3 +1,37 @@
+<div class="trips-info">
+  <div class="all-trips">
+    <h2> all <%= @user.username %> trips</h2>
+      <ul>
+      <% @trips_with_photos.each do |i, trip| %>
+        <li>
+          <%= i %>
+          <% trip.each do |photo| %>
+            <%= display_photo(photo) %>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+  </div>
+  <div class="trips-journey">
+    <ul>
+        <li>
+          <% @user.photos.each do |photo| %>
+          <% end %>
+        </li>
+      </ul>
+  </div>
+  <div class="trips-map">
+    <div style="width: 500px; height: 400px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+</div>
+
+
+
+
 <% if @user.id == current_user.id%>
 
   <h1><%= @user.username %></h1>
