@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  layout 'homepage'
+  layout 'application'
   skip_before_action :authenticate_user!, only: [ :home, :about_us ]
 
   def home
