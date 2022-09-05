@@ -1,18 +1,18 @@
 .footer {
-  background: #F4F4F4red;
+  background: $light-gray;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 200px;
   padding: 0px 50px;
-  color: rgba(0,0,0,0.3);
+  color: $gray;
 }
 .footer-links {
   display: flex;
   align-items: center;
 }
 .footer-links a {
-  color: black;
+  color: $black;
   opacity: 0.15;
   text-decoration: none;
   font-size: 24px;
@@ -22,16 +22,16 @@
   opacity: 1;
 }
 .footer .fa-heart {
-  color: #D23333;
+  color: $red;
 }
 
 .about-us {
   text-decoration: none;
-  color: black;
+  color: $black;
   opacity: 0.15;
 }
 
 .about-us :hover {
-  color: black !important;
+  color: $black !important;
   opacity: 1;
 }
