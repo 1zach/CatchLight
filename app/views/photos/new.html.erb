@@ -1,16 +1,41 @@
 <h1>Make a new photo</h1>
 
-<%= current_user.username%>
 
-<%= simple_form_for(@photo) do |f| %>
+<% keys =  ["make", "model", "orientation", "xresolution", "yresolution", "resolutionunit", "software", "datetime", "undefined", "exififdpointer", "gpsinfoifdpointer", "exposuretime", "fnumber", "exposureprogram", "isospeedratings", "exifversion", "datetimeoriginal", "datetimedigitized", "shutterspeedvalue", "aperturevalue", "brightnessvalue", "exposurebias", "meteringmode", "flash", "focallength", "subjectarea", "makernote", "subsectimeoriginal", "subsectimedigitized", "colorspace", "pixelxdimension", "pixelydimension", "sensingmethod", "scenetype", "exposuremode", "whitebalance", "focallengthin35mmfilm", "gpslatituderef", "gpslatitude", "gpslongituderef", "gpslongitude", "gpsaltituderef", "gpsaltitude", "gpsspeedref", "gpsspeed", "gpsimgdirectionref", "gpsimgdirection", "gpsdestbearingref", "gpsdestbearing", "gpsdatestamp", "thumbnail"]%>
 
-  <%= f.input :photo, as: :file %>
-  <%= f.input :creation_date_time %>
-  <%= f.input :focal_length %>
-  <%= f.input :camera %>
-  <%= f.input :aperture %>
-  <%= f.input :lens %>
-  <%= f.input :location %>
-  <%= f.input :trip %>
-  <%= f.button :submit %>
-<% end %>
+<%= form_with model: @photo, local: true do |form| %>
+
+  <div data-controller="image-preview">
+    <img width='500px' style='display: none' src="#" data-image-preview-target="output">
+
+    <div class="my-2">
+      <%= form.file_field :photo, multiple: true,
+        :class => "form-control-file photo_upload",
+        data: {
+          image_preview_target: "input",
+          action: "image-preview#readURL"
+        } %>
+    </div>
+
+
+    <p style="color: red; display: none;" data-image-preview-target="warning">No location on this photo, it is not possible to upload it.</p>
+
+    <%= f.input :trip %>
+    <% keys.each do |key| %>
+      <div class="my-2" style="display: block;">
+      <p><%= key %></p>
+      <%= form.text_field :"#{key}",
+        :class => "form-control-file photo_upload",
+        data: {
+          image_preview_target: "#{key}",
+          action: "image-preview#readURL"
+        } %>
+    </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+  <% end %>
+

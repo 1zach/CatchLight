@@ -44,9 +44,18 @@ class PhotosController < ApplicationController
       @photo = Photo.new(
         url: params[:url]
       )
+      get_flickr_additional_information(params[:id])
     else
       set_photo
     end
+    @markers = [
+      {
+        lat: @photo.latitude,
+        lng: @photo.longitude,
+        url: @photo.url,
+        info_window: render_to_string(partial: "info_window", locals: {photo: @photo})
+      }
+    ]
   end
 
   def new
@@ -120,14 +129,16 @@ class PhotosController < ApplicationController
         latitude: flickr_photo.latitude.to_f,
         longitude: flickr_photo.longitude.to_f,
         creation_date_time: flickr_photo.datetaken,
-        creator: flickr_photo.ownername
+        creator: flickr_photo.ownername,
+        flickr: true
       )
     end
   end
 
   def get_flickr_additional_information(photo_id)
-    flickr = Flickr.new(ENV["FLICKR_API_KEY"], ENV["FLICKR_SHARED_SECRET"])
-    flickr.photos.getExif(photo_id)
+    flickr = Flickr.new(ENV["FLICKR_API_KEY"])# ENV["FLICKR_SHARED_SECRET"])
+    @flickr = flickr.photos.getExif(photo_id: photo_id)
+    #@flickr = flickr.photos.getExif(photo_id.to_i)
   end
 
   def photo_params

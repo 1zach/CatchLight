@@ -1,0 +1,5 @@
+meta_product_name: "CatchLight"
+meta_title: "Catch Light - Find the Perfect Light"
+meta_description: "Catch Light helps you search, filter, and map images from around the world, giving you the opporutnity to find the perfect light conditions for your next photoshoot."
+meta_image: "img_lights.jpg" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"
