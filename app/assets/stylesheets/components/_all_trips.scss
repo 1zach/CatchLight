@@ -1,0 +1,22 @@
+.all-trips {
+  display: flex;
+  flex-direction: column;
+  background-color: grey;
+  text-align: center;
+  padding: 50px;
+  text-decoration: none;
+}
+
+.photos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 20px;
+}
+
+.trip-name {
+  text-decoration: none;
+}
+.trips-photos {
+  text-decoration: none;
+  text-size-adjust: ;
+}
