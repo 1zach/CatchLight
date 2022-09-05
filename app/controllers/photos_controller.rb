@@ -40,11 +40,25 @@ class PhotosController < ApplicationController
   end
 
   def show
+
+    def get_exif
+    raw_exif = get_flickr_additional_information(params[:id]).exif
+    useful_exif = useful_exif.select do |hash|
+      hash['tag'] == 'Model' ||
+      hash['tag'] == 'Aperture' ||
+      hash['tag'] == 'DateTimeOriginal'
+      raise
+    end
+
+    end
     if params[:flickr]
+      get_exif
       @photo = Photo.new(
         url: params[:url]
       )
-      get_flickr_additional_information(params[:id])
+      
+
+      
     else
       set_photo
     end
