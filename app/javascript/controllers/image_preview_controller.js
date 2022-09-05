@@ -1,8 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 import EXIF from 'exif-js'
 
-const keys = [ 'Make', 'Model', 'Orientation', 'XResolution', 'YResolution', 'ResolutionUnit', 'Software', 'DateTime', 'undefined', 'ExifIFDPointer', 'GPSInfoIFDPointer', 'ExposureTime', 'FNumber', 'ExposureProgram', 'ISOSpeedRatings', 'ExifVersion', 'DateTimeOriginal', 'DateTimeDigitized', 'ShutterSpeedValue', 'ApertureValue', 'BrightnessValue', 'ExposureBias', 'MeteringMode', 'Flash', 'FocalLength', 'SubjectArea', 'MakerNote', 'SubsecTimeOriginal', 'SubsecTimeDigitized', 'ColorSpace', 'PixelXDimension', 'PixelYDimension', 'SensingMethod', 'SceneType', 'ExposureMode', 'WhiteBalance', 'FocalLengthIn35mmFilm', 'GPSLatitudeRef', 'GPSLatitude', 'GPSLongitudeRef', 'GPSLongitude', 'GPSAltitudeRef', 'GPSAltitude', 'GPSSpeedRef', 'GPSSpeed', 'GPSImgDirectionRef', 'GPSImgDirection', 'GPSDestBearingRef', 'GPSDestBearing', 'GPSDateStamp', 'thumbnail']
-const keyDowncase =  ['input', 'output', 'warning',"make", "model", "orientation", "xresolution", "yresolution", "resolutionunit", "software", "datetime", "undefined", "exififdpointer", "gpsinfoifdpointer", "exposuretime", "fnumber", "exposureprogram", "isospeedratings", "exifversion", "datetimeoriginal", "datetimedigitized", "shutterspeedvalue", "aperturevalue", "brightnessvalue", "exposurebias", "meteringmode", "flash", "focallength", "subjectarea", "makernote", "subsectimeoriginal", "subsectimedigitized", "colorspace", "pixelxdimension", "pixelydimension", "sensingmethod", "scenetype", "exposuremode", "whitebalance", "focallengthin35mmfilm", "gpslatituderef", "gpslatitude", "gpslongituderef", "gpslongitude", "gpsaltituderef", "gpsaltitude", "gpsspeedref", "gpsspeed", "gpsimgdirectionref", "gpsimgdirection", "gpsdestbearingref", "gpsdestbearing", "gpsdatestamp", "thumbnail"]
+const keys = [ 'Make', 'Model', 'Orientation', 'XResolution', 'YResolution', 'ResolutionUnit', 'Software', 'DateTime', 'ExifIFDPointer', 'GPSInfoIFDPointer', 'ExposureTime', 'FNumber', 'ExposureProgram', 'ISOSpeedRatings', 'ExifVersion', 'DateTimeOriginal', 'DateTimeDigitized', 'ShutterSpeedValue', 'ApertureValue', 'BrightnessValue', 'ExposureBias', 'MeteringMode', 'Flash', 'FocalLength', 'SubjectArea', 'MakerNote', 'SubsecTimeOriginal', 'SubsecTimeDigitized', 'ColorSpace', 'PixelXDimension', 'PixelYDimension', 'SensingMethod', 'SceneType', 'ExposureMode', 'WhiteBalance', 'FocalLengthIn35mmFilm', 'GPSLatitudeRef', 'GPSLatitude', 'GPSLongitudeRef', 'GPSLongitude', 'GPSAltitudeRef', 'GPSAltitude']
+const keyDowncase =  ['input', 'output', 'warning',"make", "model", "orientation", "xresolution", "yresolution", "resolutionunit", "software", "datetime", "exififdpointer", "gpsinfoifdpointer", "exposuretime", "fnumber", "exposureprogram", "isospeedratings", "exifversion", "datetimeoriginal", "datetimedigitized", "shutterspeedvalue", "aperturevalue", "brightnessvalue", "exposurebias", "meteringmode", "flash", "focallength", "subjectarea", "makernote", "subsectimeoriginal", "subsectimedigitized", "colorspace", "pixelxdimension", "pixelydimension", "sensingmethod", "scenetype", "exposuremode", "whitebalance", "focallengthin35mmfilm", "gpslatituderef", "gpslatitude", "gpslongituderef", "gpslongitude", "gpsaltituderef", "gpsaltitude"]
 
 // Connects to data-controller="image-uploader"
 export default class extends Controller {
@@ -24,7 +24,6 @@ export default class extends Controller {
     const ResolutionUnit = this.resolutionunitTarget
     const Software = this.softwareTarget
     const DateTime = this.datetimeTarget
-    const undefined = this.undefinedTarget
     const ExifIFDPointer = this.exififdpointerTarget
     const GPSInfoIFDPointer = this.gpsinfoifdpointerTarget
     const ExposureTime = this.exposuretimeTarget
@@ -59,14 +58,7 @@ export default class extends Controller {
     const GPSLongitude = this.gpslongitudeTarget
     const GPSAltitudeRef = this.gpsaltituderefTarget
     const GPSAltitude = this.gpsaltitudeTarget
-    const GPSSpeedRef = this.gpsspeedrefTarget
-    const GPSSpeed = this.gpsspeedTarget
-    const GPSImgDirectionRef = this.gpsimgdirectionrefTarget
-    const GPSImgDirection = this.gpsimgdirectionTarget
-    const GPSDestBearingRef = this.gpsdestbearingrefTarget
-    const GPSDestBearing = this.gpsdestbearingTarget
-    const GPSDateStamp = this.gpsdatestampTarget
-    const thumbnail = this.thumbnailTarget
+
 
 
     if (input.files && input.files[0]) {
