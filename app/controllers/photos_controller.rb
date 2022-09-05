@@ -65,6 +65,10 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.user = current_user
+
+    @time = "#{photo_params["creation_date_time"].to_date.to_fs} #{photo_params["creation_date_time"][-8..-1]}".to_datetime
+    @photo.creation_date_time = @time
+
     @photo.creator = current_user.first_name
     if @photo.save
       redirect_to photo_path(@photo)

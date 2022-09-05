@@ -1,6 +1,6 @@
 .container {
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -77,27 +77,27 @@ position: relative;
 position: absolute;
 bottom: 15%;
 left: 10%;
-color: #fff;
+color: $white;
 font-weight: bolder;
 }
 #featureContainer a{
 text-decoration: none;
 }
 #featureContainer .indicator{
-border: 1px solid rgb(202, 202, 202);
+border: 1px solid $gray;
 padding: 3px 6px 3px 6px;
 }
 #featureContainer .indicator:hover{
-background-color: blue;
-border: 1px solid blue;
+background-color: $dark-gray;
+border: 1px solid $dark-gray;
 transition: 200ms;
 }
 #featureContainer .indicator:hover{
-color: white;
+color: $white;
 transition: 200ms;
 }
 #featureContainer .indicator {
-color: lightgray;
+color: $gray;
 }
 #featureContainer .float-end{
 padding-top: 10px;

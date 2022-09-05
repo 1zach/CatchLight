@@ -1,12 +1,20 @@
 import { Controller } from "@hotwired/stimulus"
 import EXIF from 'exif-js'
 
-const keys = [ 'Make', 'Model', 'Orientation', 'XResolution', 'YResolution', 'ResolutionUnit', 'Software', 'DateTime', 'ExifIFDPointer', 'GPSInfoIFDPointer', 'ExposureTime', 'FNumber', 'ExposureProgram', 'ISOSpeedRatings', 'ExifVersion', 'DateTimeOriginal', 'DateTimeDigitized', 'ShutterSpeedValue', 'ApertureValue', 'BrightnessValue', 'ExposureBias', 'MeteringMode', 'Flash', 'FocalLength', 'SubjectArea', 'MakerNote', 'SubsecTimeOriginal', 'SubsecTimeDigitized', 'ColorSpace', 'PixelXDimension', 'PixelYDimension', 'SensingMethod', 'SceneType', 'ExposureMode', 'WhiteBalance', 'FocalLengthIn35mmFilm', 'GPSLatitudeRef', 'GPSLatitude', 'GPSLongitudeRef', 'GPSLongitude', 'GPSAltitudeRef', 'GPSAltitude']
-const keyDowncase =  ['input', 'output', 'warning',"make", "model", "orientation", "xresolution", "yresolution", "resolutionunit", "software", "datetime", "exififdpointer", "gpsinfoifdpointer", "exposuretime", "fnumber", "exposureprogram", "isospeedratings", "exifversion", "datetimeoriginal", "datetimedigitized", "shutterspeedvalue", "aperturevalue", "brightnessvalue", "exposurebias", "meteringmode", "flash", "focallength", "subjectarea", "makernote", "subsectimeoriginal", "subsectimedigitized", "colorspace", "pixelxdimension", "pixelydimension", "sensingmethod", "scenetype", "exposuremode", "whitebalance", "focallengthin35mmfilm", "gpslatituderef", "gpslatitude", "gpslongituderef", "gpslongitude", "gpsaltituderef", "gpsaltitude"]
+function ConvertDMSToDD(degrees, minutes, seconds, direction) {
+  var dd = degrees + minutes/60 + seconds/(60*60);
+
+  if (direction == "S" || direction == "W") {
+      dd = dd * -1;
+  } // Don't do anything for N or E
+  return dd;
+}
+
 
 // Connects to data-controller="image-uploader"
 export default class extends Controller {
-  static targets = keyDowncase
+
+  static targets = [ "output", "input", "camera", "creation", "location", "aperture", "lens", "focal_length", "warning"]
 
   connect() {
 
@@ -15,51 +23,13 @@ export default class extends Controller {
   readURL() {
     const input = this.inputTarget
     const output = this.outputTarget
+    const camera = this.cameraTarget
+    const creation = this.creationTarget
+    const location = this.locationTarget
+    const aperture = this.apertureTarget
+    const lens = this.lensTarget
+    const focal_length = this.focal_lengthTarget
     const warning = this.warningTarget
-    const Make = this.makeTarget
-    const Model = this.modelTarget
-    const Orientation = this.orientationTarget
-    const XResolution = this.xresolutionTarget
-    const YResolution = this.yresolutionTarget
-    const ResolutionUnit = this.resolutionunitTarget
-    const Software = this.softwareTarget
-    const DateTime = this.datetimeTarget
-    const ExifIFDPointer = this.exififdpointerTarget
-    const GPSInfoIFDPointer = this.gpsinfoifdpointerTarget
-    const ExposureTime = this.exposuretimeTarget
-    const FNumber = this.fnumberTarget
-    const ExposureProgram = this.exposureprogramTarget
-    const ISOSpeedRatings = this.isospeedratingsTarget
-    const ExifVersion = this.exifversionTarget
-    const DateTimeOriginal = this.datetimeoriginalTarget
-    const DateTimeDigitized = this.datetimedigitizedTarget
-    const ShutterSpeedValue = this.shutterspeedvalueTarget
-    const ApertureValue = this.aperturevalueTarget
-    const BrightnessValue = this.brightnessvalueTarget
-    const ExposureBias = this.exposurebiasTarget
-    const MeteringMode = this.meteringmodeTarget
-    const Flash = this.flashTarget
-    const FocalLength = this.focallengthTarget
-    const SubjectArea = this.subjectareaTarget
-    const MakerNote = this.makernoteTarget
-    const SubsecTimeOriginal = this.subsectimeoriginalTarget
-    const SubsecTimeDigitized = this.subsectimedigitizedTarget
-    const ColorSpace = this.colorspaceTarget
-    const PixelXDimension = this.pixelxdimensionTarget
-    const PixelYDimension = this.pixelydimensionTarget
-    const SensingMethod = this.sensingmethodTarget
-    const SceneType = this.scenetypeTarget
-    const ExposureMode = this.exposuremodeTarget
-    const WhiteBalance = this.whitebalanceTarget
-    const FocalLengthIn35mmFilm = this.focallengthin35mmfilmTarget
-    const GPSLatitudeRef = this.gpslatituderefTarget
-    const GPSLatitude = this.gpslatitudeTarget
-    const GPSLongitudeRef = this.gpslongituderefTarget
-    const GPSLongitude = this.gpslongitudeTarget
-    const GPSAltitudeRef = this.gpsaltituderefTarget
-    const GPSAltitude = this.gpsaltitudeTarget
-
-
 
     if (input.files && input.files[0]) {
       const reader = new FileReader();
@@ -74,15 +44,26 @@ export default class extends Controller {
       const allMetaData = EXIF.getAllTags(this);
       console.log(allMetaData);
 
-      for (const key of keys) {
-        eval(key).value = EXIF.getTag(this, key);
-      }
-
-      if (EXIF.getTag(this, "GPSLatitude")) {
-        console.log(warning)
+      if (EXIF.getTag(this, "GPSLatitude") || EXIF.getTag(this, "DateTime")) {
+        console.log('This photo have a location')
       } else {
         warning.style.display = "block";
+        console.log('This photo doesnt have a location')
       }
+
+
+      const latit = ConvertDMSToDD(parseFloat(EXIF.getTag(this, "GPSLatitude")[0]), parseFloat(EXIF.getTag(this, "GPSLatitude")[1]), parseFloat(EXIF.getTag(this, "GPSLatitude")[2]), EXIF.getTag(this, "GPSLatitudeRef"))
+      const longit = ConvertDMSToDD(parseFloat(EXIF.getTag(this, "GPSLongitude")[0]), parseFloat(EXIF.getTag(this, "GPSLongitude")[1]), parseFloat(EXIF.getTag(this, "GPSLongitude")[2]), EXIF.getTag(this, "GPSLongitudeRef"))
+      const loc = [latit, longit]
+      console.log(loc)
+
+      camera.value = EXIF.getTag(this, "Model");
+      creation.value = EXIF.getTag(this, "DateTime");
+      location.value = loc;
+      aperture.value = EXIF.getTag(this, "ApertureValue");
+      lens.value = "none"
+      focal_length.value = EXIF.getTag(this, "FocalLength");
+
     });
 
 
