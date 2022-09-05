@@ -1,71 +1,31 @@
-<div class="trips-info">
-  <div class="all-trips">
-    <h2> all <%= @user.username %> trips</h2>
-      <ul>
-      <% @trips_with_photos.each do |i, trip| %>
-        <li>
-          <%= i %>
-          <% trip.each do |photo| %>
-            <%= display_photo(photo) %>
-          <% end %>
-        </li>
+<div class="trips-list">
+  <h2> all <%= @user.username %> trips</h2>
+</div>
+<div class="all-trips">
+  <ul>
+  <% @trips_with_photos.each do |i, trip| %>
+    <li class="trip-name">
+      <%= i %>
+      <li class="trips-photos">
+        <% trip.each do |photo| %>
+          <%= display_photo(photo) %>
         <% end %>
-      </ul>
-  </div>
-  <div class="trips-journey">
-    <ul>
-        <li>
-          <% @user.photos.each do |photo| %>
-          <% end %>
-        </li>
-      </ul>
-  </div>
-  <div class="trips-map">
-    <div style="width: 500px; height: 400px;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
-  </div>
+      </li>
+    </li>
+    <% end %>
+  </ul>
 </div>
 
-
-
-
-<% if @user.id == current_user.id%>
-
-  <h1><%= @user.username %></h1>
-
-
-    <h2>Yours photos</h2>
-  <ul class = "image-gallery" width="50%">
-    <% @user.photos.each do |photo| %>
-      <li>
-        <%= link_to photo_path(photo) do %>
-        <%=display_photo(photo)%>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-
-
-
-  <h2>Liked photos</h2>
+  <%# <% <h2>Liked photos</h2>
   <ul class = "image-gallery" width="50%">
     <% @user.favorites.each do |favorite| %>
-      <li>
+      <%# <% <li>
         <% photo = Photo.find(favorite.favoritable_id)%>
-        <%=display_photo(photo)%>
-      </li>
+        <%# <% <%=display_photo(photo)%>
+      <%# <% </li>
     <% end %>
-  </ul>
+  <%# </ul> %>
 
 <%= link_to "Add a photo", new_photo_path(current_user)%>
 
 <%= link_to "Edit your profile", edit_user_registration_path(current_user)%>
-
-<% else%>
-
-<p> You are not authorized to view this page</p>
-
-<%end%>

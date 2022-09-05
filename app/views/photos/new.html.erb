@@ -20,7 +20,8 @@
 
     <p style="color: red; display: none;" data-image-preview-target="warning">No location on this photo, it is not possible to upload it.</p>
 
-    <%= f.input :trip %>
+    <%= form.text_field :trip %>
+
     <% keys.each do |key| %>
       <div class="my-2" style="display: block;">
       <p><%= key %></p>
@@ -38,4 +39,3 @@
     <%= form.submit %>
   </div>
   <% end %>
-
