@@ -23,8 +23,10 @@
   position: relative;
   top: 125px;
   width: 95%;
-  background-color: rgba(255, 255, 255, 0.437);
-  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.824);
+  flex-direction: row;
+  margin: 10px;
+  padding: 20px 10px;
 
   .form-control {
     width: 100px;
@@ -38,6 +40,9 @@
     padding: 5px 8px;
     border-radius: 3px;
     background-color: inherit;
+  }
+  .range-submit {
+    background-color: transparent
   }
   
 }
