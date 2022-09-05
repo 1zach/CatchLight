@@ -13,22 +13,19 @@ class PhotosController < ApplicationController
       radius = params[:query_radius]
       month = (params[:query_month])
       flickr_photos = []
-       until flickr_photos.count >= 20 do
+      until flickr_photos.count >= 20 do
         start_date = "#{year}-#{month}-01"
-
         end_date = "#{year}-#{month}-28"
         flickr_photos += get_flickr_photos(new_location.first.data["lat"], new_location.first.data["lon"], text, start_date, end_date, radius)
-
         year -= 1
-       if year == 1995
-        break
+        if year == 1995
+          break
         end
       end
-      @photos = flickr_photos + catch_light_photos
+      @photos = catch_light_photos + flickr_photos
     else
       @photos = Photo.all
     end
-
     @markers = @photos.map do |photo|
       {
         lat: photo.latitude,
@@ -40,36 +37,44 @@ class PhotosController < ApplicationController
   end
 
   def show
-
     def get_exif
-    raw_exif = get_flickr_additional_information(params[:id]).exif
-    useful_exif = useful_exif.select do |hash|
-      hash['tag'] == 'Model' ||
-      hash['tag'] == 'Aperture' ||
-      hash['tag'] == 'DateTimeOriginal'
-      raise
-    end
+      raw_exif = get_flickr_additional_information(params[:id]).exif
+      useful_exif = raw_exif.select { |hash| hash['tag'] == "Lens" || 
+      hash['tag'] == "FNumber" ||
+      hash['tag'] == "Aperture" ||
+      hash['tag'] == "Model" ||
+      hash['tag'] == "DateTimeOriginal"
+      }
 
     end
     if params[:flickr]
       get_exif
       @photo = Photo.new(
-        url: params[:url]
+        url: params[:url],
       )
-      
-
+      @markers = [
+        {
+          lat: params['latitude'],
+          lng: params['longitude'],
+          url: @photo.url,
+          info_window: render_to_string(partial: "info_window", locals: {photo: @photo})
+        }
+      ]
       
     else
       set_photo
+      @markers = [
+        {
+          lat: @photo.latitude,
+          lng: @photo.longitude,
+          url: @photo.url,
+          info_window: render_to_string(partial: "info_window", locals: {photo: @photo})
+        }
+
+      ]
     end
-    @markers = [
-      {
-        lat: @photo.latitude,
-        lng: @photo.longitude,
-        url: @photo.url,
-        info_window: render_to_string(partial: "info_window", locals: {photo: @photo})
-      }
-    ]
+    
+      
   end
 
   def new
@@ -107,8 +112,6 @@ class PhotosController < ApplicationController
   def get_catch_light_photos(query_location, query_month, query_distance = 100)
     Photo.near(query_location, query_distance, order: :distance)
          .where("SELECT EXTRACT(MONTH FROM creation_date_time) = ?", query_month)
-
-
   end
 
 
