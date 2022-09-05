@@ -60,6 +60,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_105511) do
     t.index ["scope"], name: "index_favorites_on_scope"
   end
 
+  create_table "flickr_searches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "photos", force: :cascade do |t|
     t.text "url"
     t.string "creator"
@@ -74,8 +79,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_105511) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
-    t.string "trip"
     t.boolean "flickr", default: false
+    t.string "trip"
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
