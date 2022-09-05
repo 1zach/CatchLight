@@ -1,14 +1,3 @@
-<div id="carbon-block"></div>
-<div class="jquery-script-ads"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2783044520727903"
-     crossorigin="anonymous"></script>
-<!-- jQuery_demo -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:728px;height:90px"
-     data-ad-client="ca-pub-2783044520727903"
-     data-ad-slot="2780937993"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script></div>
 <div class="jquery-script-clear"></div>
 </div>
 </div>
@@ -130,3 +119,41 @@
 			</div>
 		</div>
 	</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	    <script>
+        let items = document.querySelectorAll('#featureContainer .carousel .carousel-item');
+        items.forEach((el) => {
+        const minPerSlide = 4
+      let next = el.nextElementSibling
+        for (let i=1; i<minPerSlide; i++) {
+        if (!next) {
+          // wrap carousel by using first child
+        next = items[0]
+        }
+        let cloneChild = next.cloneNode(true)
+        el.appendChild(cloneChild.children[0])
+        next = next.nextElementSibling
+        }
+      })
+    $(document).ready(function(){
+      $('#featureCarousel').carousel({interval: false});
+      $('#featureCarousel').carousel('pause');
+    });
+	  </script>
+	  <script type="text/javascript">
+
+      let _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+  (function() {
+    let ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    let s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>

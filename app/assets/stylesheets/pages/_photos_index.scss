@@ -4,28 +4,28 @@
     gap: 10px;
     list-style:none;
     padding: 0;
-    max-width: 60%;
+    max-width: 100%;
   }
-  
+
   .image-gallery > li {
     height: 300px;
     cursor: pointer;
     position: relative;
     flex-grow: 1;
-   
-    
+
+
   }
 
   .image-gallery::after {
-    
+
   }
-  
+
   .image-gallery li img {
     object-fit: cover;
     width: 100%;
     height: 100%;
     vertical-align: middle;
-    
+
   }
 
   .map {
@@ -59,12 +59,12 @@
   }
 
   .img_gallery_text {
-    
+
     background-color: green;
     height: 10px;
     width: 10px;
 
-    
+
   }
 
   #img_gallery_text1 {
@@ -74,8 +74,8 @@
     left: 0;
     color: white;
   }
-  
- 
+
+
   #img_gallery_text2 {
     position: relative;
     //display: inline-block;
@@ -84,24 +84,24 @@
     color: white;
 
   }
-  
+
 
   #img_gallery_text3 {
     position: relative;
     //display: inline-block;
     bottom: 0;
     color: white;
-   
+
   }
 
-  
+
 
 
   @media (max-width: 700px) {
     .image-map-container {
       flex-direction: column;
       align-items: center;
-      
+
       .map {
         height: 30vh !important;
         z-index: 100;
