@@ -1,1 +1,7 @@
-<%= cl_image_tag photo.photo.key, height: 300, width: 400, crop: :fill %>
+<div class = "img_gallery_photo_hover">
+  <p id= "img_gallery_text1"><%=photo.creator%></p>
+  <p id = "img_gallery_text2">Lat: <%=photo.latitude%> Long: <%=photo.longitude%></p>
+  <p id = "img_gallery_text3"><%=photo.creation_date_time%></p>
+</div>
+<%= cl_image_tag photo.photo.key, height: 300, width: 400, crop: :fill, class: "img_gallery_photo" %>
+
