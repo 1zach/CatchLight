@@ -5,8 +5,6 @@
 <br>
  <% if @photo.id%>
     <% if current_user == nil %>
-
-
     <% elsif current_user.favorited?(@photo) %>
       <%= button_to toggle_favorite_photo_path(@photo), method: :post, class: 'coeur' do%>
         <i class="fas fa-heart red-tog"></i>
@@ -19,26 +17,19 @@
       </div>
     <% end %>
     <%end%>
-
 <div class="show-map">
   <div class="user-show-photo">
-
-
     <%= show_photo(@photo) %>
-
   </div>
-
   <div class="show-content">
     <h2>A photo taken by <%= @photo.creator %></h2>
     <p>Focal length: <%= @photo.focal_length %></p>
     <% photo_time = @photo.creation_date_time.nil? ? 'Unknown Time' : @photo.creation_date_time.strftime("%A %d %B at %I:%M%p") %>
     <p>Time: <%= photo_time %>
-
     <p>Camera: <%= @photo.camera %></p>
     <p>Aperture: <%= @photo.aperture.to_f.round(2) %></p>
     <p>Location: <%= @photo.location %></p>
     <br>
-
      <% if current_user = @photo.user %>
       <div>
         <%= link_to "Destroy this photo", user_path(current_user), data: { turbo_method: :delete, turbo_confirm: "Please, we need your photo"}%>
