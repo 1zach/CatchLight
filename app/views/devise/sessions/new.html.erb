@@ -1,19 +1,20 @@
-<div class="contianer">
+<div class="container">
   <div class="row">
+    <%= image_tag "cover.png", id: "CatchLight-image" %>
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-      <div class="login in to Catch light">
+      <div class="login in">
         <%# i created four new div classes which is container, row, colums, login - by ( Tenzin ) %>
 
-        <h2>Log in</h2>
+        <h2>Log in to CatchLight</h2>
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
         <div class="form-inputs">
           <%= f.input :email,
           required: false,
           # i created here below placehoder for login mail id en password! by ( Tenzin)
-          autofocus: true, placeholder: "catchlight@gmail.com",
+          autofocus: true, placeholder: "Email address or user name",
           input_html: { autocomplete: "email" } %>
           <%= f.input :password,
-          required: false, placeholder: "***********",
+          required: false, placeholder: "password",
           input_html: { autocomplete: "current-password" } %>
           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
         </div>
@@ -22,6 +23,7 @@
           <%= f.button :submit, "Log in" %>
         </div>
         <% end %>
+
 
         <%= render "devise/shared/links" %>
       </div>
