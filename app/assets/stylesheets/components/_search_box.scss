@@ -1,0 +1,304 @@
+
+//CSS for the whole search box
+.search-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: row;
+  background-color: $white;
+  border-radius: 20px;
+  transform: translateX(70vh) !important;
+
+  //height: 15vh;
+  box-shadow: $box-shadow;
+  padding: 20px 40px;
+  position: absolute;
+  bottom: 250px;
+  margin:0 auto;
+  align-items: center;
+  z-index: 100;
+  font-family: 'Roboto Mono', monospace;
+}
+
+#index-search-box {
+  position: relative;
+  top: 125px;
+  width: 95%;
+  background-color: rgba(255, 255, 255, 0.824);
+  flex-direction: row;
+  margin: 10px;
+  padding: 20px 10px;
+
+  .form-control {
+    width: 100px;
+    background-color: inherit;
+  }
+
+  .location-month {
+    align-items: center;
+  }
+  .btn-black {
+    padding: 5px 8px;
+    border-radius: $border-radius;
+    background-color: inherit;
+  }
+
+  .range-submit {
+    background-color: transparent
+  }
+}
+
+
+.fa-calendar, .fa-location-dot  {
+  color: $slider;
+  //font-size: 24px;
+  //padding-right: 5px;
+  //position: absolute;
+  //left: 10%;
+  -ms-transform: translateY(10%);
+  transform: translateY(15%);
+}
+
+.fa-location-dot {
+  -ms-transform: translateY(10%);
+  transform: translateY(10%);
+}
+
+.location-month {
+  display:flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.range-submit {
+  display:flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+// Not used currently
+// .time-in-day {
+//   display: flex;
+//   justify-content: space-around;
+// }
+
+//Month Selector - much more css below
+#month {
+  width: 100px;
+}
+//Location box
+.form-control {
+  width: 150px;
+  background-color: $white;
+  border: 1px solid $slider;
+}
+
+.time-in-day input {
+  margin: 5px;
+  color: $slider;
+  background-color: $dark-white;
+  border-radius: 10px;
+}
+//button - currently white
+.btn-black {
+  background-color: $white;
+  color: $slider;
+  border-radius: $border-radius;
+  padding: 5px 20px;
+  text-align: center;
+  line-height: normal;
+  font-size: 16px;
+  border: solid 1px $slider;
+  text-decoration: none;
+}
+
+.btn-black:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+//Range slider CSS
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 12.8px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: $slider;
+  border-radius: 25px;
+  border: 0px solid #000101;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 1px solid #000000;
+  height: 20px;
+  width: 39px;
+  border-radius: 7px;
+  background: $white;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3.6px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: $slider;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 12.8px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: $slider;
+  border-radius: 25px;
+  border: 0px solid #000101;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 1px solid #000000;
+  height: 20px;
+  width: 39px;
+  border-radius: 7px;
+  background: $white;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 12.8px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  border-width: 39px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: $slider;
+  border: 1px solid #000101;
+  border-radius: 50px;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: $slider;
+  border: 0px solid #000101;
+  border-radius: 50px;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 1px solid #000000;
+  height: 20px;
+  width: 39px;
+  border-radius: 7px;
+  background: $white;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: $slider;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: $slider;
+}
+
+//CSS for the slider
+.range_slider {
+  display: flex;
+  flex-direction: column;
+  color: $slider;
+  line-height: normal;
+}
+
+.bubble {
+  background: $slider;
+  color: $white;
+  padding: 5px 6px;
+ // position: absolute;
+  border-radius: $border-radius;
+  font-size: 12px;
+  font-family: 'Roboto Mono', monospace;
+  margin: 0 auto;
+  text-align: center;
+  display: inline-block;
+  //left: 50%;
+  //top: -20px;
+  //transform: translateX(-50%);
+}
+.bubble::after {
+  content: "";
+ // position: absolute;
+  width: 2px;
+  height: 2px;
+
+
+  background: $slider;
+  //top: -1px;
+  //left: 50%;
+
+}
+
+@media (max-width: 700px) {
+  .search-box {
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center !important;
+    height: 250px;
+    gap: 0px;
+    transform: translateY(0px);
+
+    .btn-black {
+      align-self: center;
+    }
+
+    .range_slider {
+      align-self: center;
+    }
+
+    #month {
+      width: 150px;
+      align-self: center;
+
+
+    }
+
+    .calendar {
+      display: flex;
+    }
+
+    .location-month {
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .range-submit {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .search-box {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+
+  }
+
+  .range-submit {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+  }
+
+  .location-month {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+  }
+
+}

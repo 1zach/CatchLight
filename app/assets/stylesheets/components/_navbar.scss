@@ -1,14 +1,25 @@
+
+// .homepage-navbar{
+//   width: 100%;
+//   display: flex;
+//   justify-content: space-between;
+//   background-color: transparent;
+// }
+
+
 .navbar-lewagon {
   justify-content: space-between;
-  background-color: transparent;
+  height: 50px;
+  position: sticky;
+  background-color: $white;
+  top: 0;
+  z-index: 3;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
-  opacity: 1 !important;
 }
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
-  opacity: 1 !important;
 }
