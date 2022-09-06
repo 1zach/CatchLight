@@ -9,10 +9,15 @@
   align-content: space-around;
   justify-content: space-around;
 
+
+
 }
 .login{
 
-  background: $light-gray;
+
+  text-align: center;
+  background: #b0eced29;
+
   padding: 10px 20px;
   margin-top: 50px;
   border-radius: $border-radius;
@@ -20,21 +25,37 @@
 }
 h2 {
 
-  front-size: 20px;
-  front-weight: bold;
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: bold;
   margin-bottom: 30px;
   text-align: center;
+  box-shadow: #577fba;
+  font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
 }
 
 .btn {
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+  line-height: 48px;
+  padding: 0 16px;
+  width: 332px;
+  background-color:  lightseagreen;
+  font-weight:bold;
 
-  width: 100%;
-  margin-bottom: 20px;
-  border: 1px solid $light-gray;
-  background-color:  $lightseagreen;;
+  &:hover {
+
+    color: aliceblue;
+    background-color:  lightseagreen;
+
+  }
 }
 
 a {
-  color: $gray-blue;
-  text-decoration: underline;
+    color: #135fd0;
+    text-decoration: underline;
+    cursor: pointer;
+    text-decoration: none;
+
 }

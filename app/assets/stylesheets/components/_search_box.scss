@@ -2,10 +2,10 @@
 //CSS for the whole search box
 .search-box {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   gap: 10px;
   flex-direction: row;
-  background-color: $white;
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 20px;
   transform: translateX(70vh) !important;
 
@@ -13,11 +13,36 @@
   box-shadow: $box-shadow;
   padding: 20px 40px;
   position: absolute;
-  bottom: 250px;
+  bottom: 310px;
+  left: 81px;
   margin:0 auto;
   align-items: center;
   z-index: 100;
   font-family: 'Roboto Mono', monospace;
+  width: 750px;
+
+  input[type=text]{
+    background-color: rgba(255, 255, 255, 0.6);
+    border: none
+  }
+  select {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: none;
+    color: $slider;
+  }
+
+  input[type=submit]{
+    background-color: rgba(255, 255, 255, 0.6);
+    border: none;
+    margin-left: 50px;
+    color: $slider;
+    border-radius: $border-radius;
+    padding: 0px 31px;
+    text-align: center;
+    line-height: normal;
+    font-size: 16px;
+
+  }
 }
 
 #index-search-box {
@@ -44,7 +69,8 @@
   }
 
   .range-submit {
-    background-color: transparent
+    background-color: transparent;
+
   }
 }
 
@@ -66,12 +92,15 @@
 
 .location-month {
   display:flex;
+  justify-content: space-around;
   flex-direction: row;
   gap: 5px;
 }
 
 .range-submit {
   display:flex;
+  display:flex;
+  justify-content: space-around;
   flex-direction: row;
   gap: 5px;
 }
@@ -100,6 +129,7 @@
   border-radius: 10px;
 }
 //button - currently white
+
 .btn-black {
   background-color: $white;
   color: $slider;
@@ -125,6 +155,8 @@ input[type=range] {
 input[type=range]:focus {
   outline: none;
 }
+
+
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 12.8px;
@@ -214,19 +246,14 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .bubble {
-  background: $slider;
   color: $white;
   padding: 5px 6px;
- // position: absolute;
   border-radius: $border-radius;
   font-size: 12px;
   font-family: 'Roboto Mono', monospace;
   margin: 0 auto;
   text-align: center;
   display: inline-block;
-  //left: 50%;
-  //top: -20px;
-  //transform: translateX(-50%);
 }
 .bubble::after {
   content: "";

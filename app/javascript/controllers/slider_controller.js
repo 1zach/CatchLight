@@ -12,7 +12,7 @@ export default class extends Controller {
   const min = this.rangeTarget.min ? this.rangeTarget.min : 0.5;
   const max = this.rangeTarget.max ? this.rangeTarget.max : 5.0;
   const newVal = Number(((val - min) * 100) / (max - min));
-  this.bubbleTarget.innerHTML = `Search Radius: ${parseFloat(val).toFixed(1)} km`;
+  this.bubbleTarget.innerHTML = `Radius: ${parseFloat(val).toFixed(1)} km`;
 
   // Sorta magic numbers based on size of the native UI thumb
   //this.bubbleTarget.style.left = newVal = "%";
