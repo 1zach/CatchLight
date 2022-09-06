@@ -129,16 +129,18 @@
   border-radius: 10px;
 }
 //button - currently white
-// .btn-black {
-//   background-color: $white;
-//   color: $slider;
-//   border-radius: $border-radius;
-//   padding: 5px 20px;
-//   text-align: center;
-//   line-height: normal;
-//   font-size: 16px;
-//   border: solid 1px $slider;
-// }
+
+.btn-black {
+  background-color: $white;
+  color: $slider;
+  border-radius: $border-radius;
+  padding: 5px 20px;
+  text-align: center;
+  line-height: normal;
+  font-size: 16px;
+  border: solid 1px $slider;
+  text-decoration: none;
+}
 
 .btn-black:hover {
   background-color: rgb(235, 235, 235);
