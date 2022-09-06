@@ -7,12 +7,13 @@
   flex-direction: row;
   background-color: $white;
   border-radius: 20px;
+  transform: translateX(70vh) !important;
 
   //height: 15vh;
   box-shadow: $box-shadow;
   padding: 20px 40px;
   position: absolute;
-  bottom: 77px;
+  bottom: 250px;
   margin:0 auto;
   align-items: center;
   z-index: 100;
@@ -108,6 +109,7 @@
   line-height: normal;
   font-size: 16px;
   border: solid 1px $slider;
+  text-decoration: none;
 }
 
 .btn-black:hover {
