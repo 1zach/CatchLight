@@ -37,20 +37,16 @@ class PhotosController < ApplicationController
   end
 
   def show
-    def get_exif
-      raw_exif = get_flickr_additional_information(params[:id]).exif
-      useful_exif = raw_exif.select { |hash| hash['tag'] == "Lens" || 
-      hash['tag'] == "FNumber" ||
-      hash['tag'] == "Aperture" ||
-      hash['tag'] == "Model" ||
-      hash['tag'] == "DateTimeOriginal"
-      }
-
-    end
+    
     if params[:flickr]
-      get_exif
+     
       @photo = Photo.new(
         url: params[:url],
+        focal_length: exif("Focal Length").nil? ? 'None' : exif("Focal Length").first,
+        aperture: exif("Aperture").nil? ? 'None' : exif("Aperture").first,
+        creation_date_time: exif("CreateDate").nil? ? 'None' : exif("CreateDate").first,
+        camera: exif("Model").nil? ? 'None' : exif("Model").first,
+        location: [params["latitude"], params["longitude"]]
       )
       @markers = [
         {
@@ -165,6 +161,37 @@ class PhotosController < ApplicationController
   def photo_params
     params.require(:photo).permit(:url, :photo, :creation_date_time, :creator, :location, :focal_length, :camera, :aperture, :lens)
   end
+
+  def get_exif
+    raw_exif = get_flickr_additional_information(params[:id]).exif
+    useful_exif = raw_exif.select { |hash| hash['tag'] == "Lens" || 
+    hash['tag'] == "FNumber" ||
+    hash['tag'] == "Aperture" ||
+    hash['tag'] == "Model" ||
+    hash['tag'] == "DateTimeOriginal"||
+    hash['tag'] == "FocalLength" ||
+    hash['tag'] == "CreateDate"
+    }
+
+    new_exif = useful_exif.map do |hash|
+      {hash['label'] => hash['raw']}
+    end 
+    end
+     
+
+  def exif(value)
+    get_exif
+    exif_value = get_exif.find do |hash| 
+      if hash.key?(value)
+        return hash.values
+      end
+    end
+    
+   return exif_value
+  end
+
+
+  #end
 
   #def filter_flickr_images(images)
   #  return filter_flickr_images
