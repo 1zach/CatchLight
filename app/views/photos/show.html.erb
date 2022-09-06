@@ -40,7 +40,7 @@
 
      <% if current_user = @photo.user %>
       <div>
-        <%= link_to "Destroy this photo", user_path(current_user), data: { turbo_method: :delete, turbo_confirm: "Please, we need your photo"}%>
+        <%= link_to "Destroy this photo", photo_path(@photo), data: { turbo_method: :delete, turbo_confirm: "Please, we need your photo"}%>
       </div>
     <%end%>
     <br>

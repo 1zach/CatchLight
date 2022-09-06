@@ -50,3 +50,13 @@
   background-color: black;
   color: white;
 }
+
+.btn-black {
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.btn-black:hover {
+  color: white;
+  background-color: black;
+}
