@@ -18,7 +18,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 20px;
-
+  border-top: solid 1px black ;
+  padding: 30px 0px 0px 0px
 }
 
 .image-user li img {
@@ -33,6 +34,14 @@
   cursor: pointer;
   position: relative;
   flex-grow: 1;
+  list-style: none;
+}
 
+.user-info {
+  display: flex;
+}
 
+.user-0-photos {
+  text-align: center;
+  padding: 100px;
 }
