@@ -11,5 +11,28 @@
 .user-info-options {
   display: flex;
   justify-content: space-around;
-  padding: 50px 0 50px 0;
+  padding: 50px 50px 50px 50px;
+}
+
+.image-user {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+
+}
+
+.image-user li img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  vertical-align: middle;
+}
+
+.image-user > li {
+  height: 300px;
+  cursor: pointer;
+  position: relative;
+  flex-grow: 1;
+
+
 }
