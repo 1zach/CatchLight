@@ -41,9 +41,10 @@
 
 .btn-back {
   text-decoration: none;
-  color: black;
-  border:solid 1px black;
+  color: $black;
+  border:solid 1px $black;
   padding: 5px 10px 5px 10px;
+  text-decoration: none;
 }
 
 .btn-back:hover {
