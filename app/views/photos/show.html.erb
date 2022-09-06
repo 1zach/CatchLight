@@ -1,4 +1,5 @@
-<h1>Working</h1>
+<button onclick="history.back()"  class="btn-back">Go Back</button>
+<%= link_to "back to user  ", user_path(current_user), class: "btn-back" %>
 
 <br>
  <% if @photo.id%>
@@ -28,18 +29,18 @@
 
   <div class="show-content">
     <h2>A photo taken by <%= @photo.creator %></h2>
-    <p>Focal length : <%= @photo.focal_length %></p>
-    <% photo_time = @photo.creation_date_time.strftime("%A %d %B at %I:%M%p") %>
-    <p>A photo taken the <%= photo_time %></p>
+    <p>Focal length: <%= @photo.focal_length %></p>
+    <% photo_time = @photo.creation_date_time.nil? ? 'Unknown Time' : @photo.creation_date_time.strftime("%A %d %B at %I:%M%p") %>
+    <p>Time: <%= photo_time %>
 
-    <p>Camera : <%= @photo.camera %></p>
-    <p>Aperture : <%= @photo.aperture.to_f.round(2) %></p>
-    <p>Location : <%= @photo.location %></p>
+    <p>Camera: <%= @photo.camera %></p>
+    <p>Aperture: <%= @photo.aperture.to_f.round(2) %></p>
+    <p>Location: <%= @photo.location %></p>
     <br>
 
      <% if current_user = @photo.user %>
       <div>
-        <%= link_to "Destroy this photo", photo_path(@photo), data: { turbo_method: :delete, turbo_confirm: "Please, we need your photo"}%>
+        <%= link_to "Destroy this photo", user_path(current_user), data: { turbo_method: :delete, turbo_confirm: "Please, we need your photo"}%>
       </div>
     <%end%>
     <br>

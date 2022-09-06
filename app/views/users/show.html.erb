@@ -10,7 +10,8 @@
     <h2>Your photos</h2>
 
 <div class="user-show-container">
-    <ul class = "image-gallery">
+  <div class="col-12 col-lg-12">
+    <ul class = "image-user">
       <% @user.photos.each do |photo| %>
         <li>
           <%= link_to photo_path(photo) do %>
@@ -19,11 +20,12 @@
         </li>
       <% end %>
     </ul>
+  </div>
 </div>
 
 <div class="user-show-container">
   <h2>Liked photos</h2>
-  <ul class = "image-gallery">
+  <ul class = "image-user">
     <% @user.favorites.each do |favorite| %>
       <li>
         <% photo = Photo.find(favorite.favoritable_id)%>
