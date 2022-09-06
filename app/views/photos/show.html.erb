@@ -1,7 +1,4 @@
-<button onclick="history.back()"  class="btn-back">Go Back</button>
-<%= link_to "back to user  ", user_path(current_user), class: "btn-back" %>
 
-<br>
  <% if @photo.id%>
     <% if current_user == nil %>
     <% elsif current_user.favorited?(@photo) %>
@@ -15,32 +12,41 @@
       <% end %>
       </div>
     <% end %>
-    <%end%>
-<div class="show-map">
+  <%end%>
+<div class = "photo-show-banner">
+
+  <%address =  Geocoder.search([params['latitude'], params['longitude']])%>
   <div class="user-show-photo">
     <%= show_photo(@photo) %>
   </div>
-  <div class="show-content">
-    <h2>A photo taken by <%= @photo.creator %></h2>
-    <p>Focal length: <%= @photo.focal_length %></p>
+</div>
+<div class = "info-and-map">
+  <div class = "address-time">
+    <h2>Photo Information</h2>
+    <p id = "address" ><span class = "labels">Address:</span> <%= address.first.address%></p>
     <% photo_time = @photo.creation_date_time.nil? ? 'Unknown Time' : @photo.creation_date_time.strftime("%A %d %B at %I:%M%p") %>
-    <p>Time: <%= photo_time %>
-    <p>Camera: <%= @photo.camera %></p>
-    <p>Aperture: <%= @photo.aperture.to_f.round(2) %></p>
-    <p>Location: <%= @photo.location %></p>
-    <br>
+    
+    <p><span class = "labels">Date: </span><%= photo_time %>
+    <p><span class = "labels">Camera: </span><%= @photo.camera %></p>
+    <p><span class = "labels">Focal length: </span><%= @photo.focal_length %></p>
+    <p><span class = "labels">Aperture: </span><%= @photo.aperture.to_f.round(2) %></p>
+  <p><button onclick="history.back()"  class="btn-back">Go Back</button> <%= link_to "Your Homepage", user_path(current_user), class: "btn-back" %></p>
+  </div>
+
+    
+  <div class="show-map">
+    <%# <h2>A photo taken by <%= @photo.creator %></h2>
      <% if current_user = @photo.user %>
       <div>
         <%= link_to "Destroy this photo", user_path(current_user), data: { turbo_method: :delete, turbo_confirm: "Please, we need your photo"}%>
       </div>
-    <%end%>
-    <br>
-    <br>
-
-    <div style="width: 500px; height: 400px;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      <%end%>
+  </div>
+      <div style="width: 500px; height: 400px;" class = "show-page-map"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
     </div>
   </div>
-</div>
