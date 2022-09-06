@@ -1,0 +1,67 @@
+.photo-show-banner {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(61, 76, 76);
+    padding: 80px;
+    align-items: center;
+
+    .img_gallery_photo {
+        height: fit-content;
+        border: 10px solid white;
+        
+    }
+    
+}
+
+.user-show-photo {
+    margin-right: 20px;
+
+}
+
+.show-content {
+    background-color: white;
+    width: 60%;
+    margin: 20px;
+    padding: 20px;
+}
+
+.show-page-map {
+    margin: 20px 20px 0 0;
+    width: 50% !important;
+}
+
+#address {
+
+    width: 50%;
+}
+
+.address-time {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 10px;
+    margin: 20px;
+
+
+    .btn-back {
+        color: black;
+        border: 1px solid $slider;
+        background-color: white;
+        width: 150px;
+        margin: 5px;
+        display: inline-block;
+    }
+
+    .btn-back:hover {
+        background-color: rgb(219, 219, 219);
+    }
+}
+
+.info-and-map {
+    display: flex;
+}
+
+.labels {
+    font-weight: bold;
+}

@@ -39,15 +39,15 @@ class PhotosController < ApplicationController
   def show
     
     if params[:flickr]
-     
       @photo = Photo.new(
         url: params[:url],
         focal_length: exif("Focal Length").nil? ? 'None' : exif("Focal Length").first,
         aperture: exif("Aperture").nil? ? 'None' : exif("Aperture").first,
-        creation_date_time: exif("CreateDate").nil? ? 'None' : exif("CreateDate").first,
+        creation_date_time: exif("Date and Time (Original)").nil? ? 'None' : creation_date_time_formatter(exif("Date and Time (Original)").first), 
         camera: exif("Model").nil? ? 'None' : exif("Model").first,
         location: [params["latitude"], params["longitude"]]
       )
+      
       @markers = [
         {
           lat: params['latitude'],
@@ -81,7 +81,7 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     @photo.user = current_user
 
-    @time = "#{photo_params["creation_date_time"].to_date.to_fs} #{photo_params["creation_date_time"][-8..-1]}".to_datetime
+    creation_date_time_formatter(photo_params["creation_date_time"]) 
     @photo.creation_date_time = @time
 
     @photo.creator = current_user.first_name
@@ -172,10 +172,11 @@ class PhotosController < ApplicationController
     hash['tag'] == "FocalLength" ||
     hash['tag'] == "CreateDate"
     }
+      new_exif = useful_exif.map do |hash|
+        {hash['label'] => hash['raw']}
+      end 
 
-    new_exif = useful_exif.map do |hash|
-      {hash['label'] => hash['raw']}
-    end 
+      
     end
      
 
@@ -190,7 +191,9 @@ class PhotosController < ApplicationController
    return exif_value
   end
 
-
+  def creation_date_time_formatter(value)
+    "#{value.to_date.to_fs} #{value[-8..-1]}".to_datetime
+  end
   #end
 
   #def filter_flickr_images(images)
