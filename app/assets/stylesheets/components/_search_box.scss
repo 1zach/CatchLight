@@ -5,9 +5,9 @@
   justify-content: center;
   gap: 10px;
   flex-direction: row;
-  background-color: white;
+  background-color: $white;
   border-radius: 20px;
-  
+
   //height: 15vh;
   box-shadow: $box-shadow;
   padding: 20px 40px;
@@ -23,8 +23,10 @@
   position: relative;
   top: 125px;
   width: 95%;
-  background-color: rgba(255, 255, 255, 0.437);
-  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.824);
+  flex-direction: row;
+  margin: 10px;
+  padding: 20px 10px;
 
   .form-control {
     width: 100px;
@@ -36,10 +38,13 @@
   }
   .btn-black {
     padding: 5px 8px;
-    border-radius: 3px;
+    border-radius: $border-radius;
     background-color: inherit;
   }
-  
+
+  .range-submit {
+    background-color: transparent
+  }
 }
 
 
@@ -83,21 +88,21 @@
 //Location box
 .form-control {
   width: 150px;
-  background-color: white;
+  background-color: $white;
   border: 1px solid $slider;
 }
 
 .time-in-day input {
   margin: 5px;
   color: $slider;
-  background-color: rgb(255, 255, 255);
+  background-color: $dark-white;
   border-radius: 10px;
 }
 //button - currently white
 .btn-black {
-  background-color: white;
+  background-color: $white;
   color: $slider;
-  border-radius: 2px;
+  border-radius: $border-radius;
   padding: 5px 20px;
   text-align: center;
   line-height: normal;
@@ -208,10 +213,10 @@ input[type=range]:focus::-ms-fill-upper {
 
 .bubble {
   background: $slider;
-  color: white;
+  color: $white;
   padding: 5px 6px;
  // position: absolute;
-  border-radius: 4px;
+  border-radius: $border-radius;
   font-size: 12px;
   font-family: 'Roboto Mono', monospace;
   margin: 0 auto;
@@ -254,7 +259,7 @@ input[type=range]:focus::-ms-fill-upper {
     #month {
       width: 150px;
       align-self: center;
-    
+
 
     }
 
@@ -279,7 +284,7 @@ input[type=range]:focus::-ms-fill-upper {
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
-    
+
   }
 
   .range-submit {

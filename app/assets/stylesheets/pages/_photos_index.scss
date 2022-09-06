@@ -4,7 +4,7 @@
     gap: 10px;
     list-style:none;
     padding: 0;
-    max-width: 100%;
+    max-width: 60%;
   }
 
   .image-gallery > li {
@@ -47,7 +47,7 @@
     //background-color: white;
     height: 100%;
     width: 100%;
-    z-index: 100000;
+    z-index: 2;
     opacity: 0;
     color: red;
     transition: ease-in .1s;
