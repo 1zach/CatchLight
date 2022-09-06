@@ -14,8 +14,11 @@
     <% end %>
   <%end%>
 <div class = "photo-show-banner">
-
+  <% if params[:flickr]%>
   <%address =  Geocoder.search([params['latitude'], params['longitude']])%>
+  <%else%>
+  <%address =  Geocoder.search([@photo.latitude, @photo.longitude])%>
+  <%end%>
   <div class="user-show-photo">
     <%= show_photo(@photo) %>
   </div>
