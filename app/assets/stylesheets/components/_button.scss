@@ -38,3 +38,15 @@
   background: linear-gradient(#147EFF, #0F67DA);
   color: white;
 }
+
+.btn-back {
+  text-decoration: none;
+  color: black;
+  border:solid 1px black;
+  padding: 5px 10px 5px 10px;
+}
+
+.btn-back:hover {
+  background-color: black;
+  color: white;
+}
