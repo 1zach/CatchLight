@@ -1,0 +1,31 @@
+#navbar-search-box {
+    padding: 0;
+    box-shadow: none;
+    justify-content: center;
+
+}
+
+
+
+#location-box {
+    border: 1px solid $slider;
+}
+
+#calendar-box {
+    border: 1px solid $slider;
+    border-radius: 5px;
+    width: 125px;
+    height: 38.5px;
+    
+}
+
+#submit {
+    padding: 10px;
+    margin: 0;
+
+}
+
+
+#range-slider {
+    flex-direction: row;
+}
