@@ -8,7 +8,6 @@
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
     data-resizer-target = "left">
-    <%= render "shared/index_search_box"%>
   </div>
 
 <div  data-action = "mousedown->resizer#resize mousemove->resizer#mouseMoveHandler" data-resizer-target = "center" style = "cursor: col-resize">

@@ -3,19 +3,20 @@
     justify-content: space-evenly;
     background-color: rgb(61, 76, 76);
     padding: 80px;
+    height: 90vh;
     align-items: center;
 
     .img_gallery_photo {
-        height: fit-content;
+      height: 100%;
         border: 10px solid white;
-        
+
     }
-    
+
 }
 
 .user-show-photo {
     margin-right: 20px;
-
+    height: 100%;
 }
 
 .show-content {
@@ -27,7 +28,9 @@
 
 .show-page-map {
     margin: 20px 20px 0 0;
-    width: 50% !important;
+    padding: 20px;
+    width: 100%;
+    height: 90%;
 }
 
 #address {
@@ -42,19 +45,24 @@
     background-color: white;
     padding: 10px;
     margin: 20px;
-
+    width: 33%;
 
     .btn-back {
         color: black;
         border: 1px solid $slider;
         background-color: white;
-        width: 150px;
+        width: 35px;
+        height: 35px;
         margin: 5px;
         display: inline-block;
+        transition: 0.3s;
     }
 
     .btn-back:hover {
-        background-color: rgb(219, 219, 219);
+      color: white;
+      border: 1px solid $slider;
+      background-color: black;
+      transition: 0.3s;
     }
 }
 
@@ -64,4 +72,32 @@
 
 .labels {
     font-weight: bold;
+}
+
+.row_button{
+  display: flex;
+  flex-direction: row;
+}
+
+
+.show-map{
+  width: 60%;
+}
+
+@media (max-width: 700px) {
+  .show-map{
+    width: 90%;
+    height: 400px;
+    margin: 5% auto;
+  }
+
+  .address-time{
+    width: 90%;
+  }
+
+  .info-and-map{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
 }

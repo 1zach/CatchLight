@@ -1,4 +1,4 @@
-<div class = "search-box" id = "index-search-box">
+<div class = "search-box" id = "navbar-search-box">
 <div class = "location-month">
   <div class="date-month">
     <%= form_with url: photos_path, method: :get, class: "d-flex" do %>
@@ -6,11 +6,12 @@
       <%= text_field_tag :query_location,
         params[:query_location],
         class: "form-control",
-        placeholder: "Location"
+        placeholder: "Location",
+        id: "location-box"
       %>
   </div>
-  <div class = "calendar">
-      <label for="location"> <i class="fa-regular fa-fw fa-calendar"></i></label>
+  <div class = "calendar" id = "calendar-box">
+      <label for="location"> </label>
       <select name="query_month" id="month">
         <option value="01">January</option>
         <option value="02">February</option>
@@ -28,11 +29,11 @@
   </div>
 </div>
 <div class = "range-submit">
-  <div class = "range_slider" data-controller = "slider" data-action = "input->slider#bubble">
+  <div class = "range_slider" id = "range-slider" data-controller = "slider" data-action = "input->slider#bubble">
     <input type = "range" name="query_radius" id ="radius"
       min=".5" max="5.0" step = ".5" default = ".5" data-slider-target = "range">
       <label for="radius"></label>
-      <output class="bubble"  data-slider-target = "bubble">Search Radius: 2.5 km</output>
+      <!--<output class="bubble"  data-slider-target = "bubble">Search Radius: 2.5 km</output>-->
   </div>
 
 
@@ -47,7 +48,7 @@
     <label for="6AM-9AM"></label><br>
   </div> %>
 
-    <%= submit_tag "Search", class: "btn-black" %>
+    <%= submit_tag "Search", class: "btn-black", id: "submit" %>
   <% end %>
   </div>
 </div>
