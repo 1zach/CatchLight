@@ -1,5 +1,5 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+<h2 class = "pt-4">Edit <%= resource_name.to_s.humanize %></h2>
+<div class = "container w-25">
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
@@ -35,12 +35,11 @@
     <%= f.button :submit, "Update" %>
   </div>
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<div class="d-flex align-items-center">
-  <div>Unhappy?</div>
-  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-link" %>
+<%#= link_to "Back", :back, class: "btn-black"%>
+<div class="d-flex align-items-right">
+  <div class = "p-2">Unhappy?</div>
+  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: " btn-black" %>
+</div>
 </div>
 
-<%= link_to "Back", :back %>
+
