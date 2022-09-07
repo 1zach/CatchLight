@@ -18,7 +18,12 @@
             <%= link_to "User Home", user_path(current_user), class: "nav-link"  %>
           </li>
           <li class="nav-item dropdown">
-            <%= image_tag "https://this-person-does-not-exist.com/img/avatar-1fd5cdbb980ca88b495f4597c4f11da7.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%if current_user.photo.attached?%>
+               <%= cl_image_tag "#{current_user.photo.key}", class: "avatar"%>
+            <% else%>
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+            <% end%>
+
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Action", "#", class: "dropdown-item" %>
               <%= link_to "About Us", about_us_path, class: "dropdown-item" %>
