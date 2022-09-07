@@ -24,9 +24,9 @@
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
-
 }
-h2 {
+
+.login-form {
 
   font-size: 20px;
   line-height: 22px;
@@ -44,7 +44,7 @@ h2 {
   font-size: 20px;
   line-height: 48px;
   padding: 0 16px;
-  width: 332px;
+  width: 100%;
   background-color:#0d4dfd;
   font-weight:bold;
   border-radius: 25px;
@@ -52,24 +52,18 @@ h2 {
   background-color: #0d6efd;
 }
 
-a {
-  color: #081f98;
-  text-decoration: underline;
-  cursor: pointer;
-  text-decoration: none;
-}
 
 .bg-img {
   /* The image used */
   background-image: url("mountian.jpg");
-   /* Control the height of the image */
-   height: 80vh;
+  /* Control the height of the image */
+  height: 80vh;
 
-   /* Center and scale the image nicely */
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: cover;
-   position: relative;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
 .login-name {

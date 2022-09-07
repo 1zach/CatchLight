@@ -1,44 +1,52 @@
-.row {
-  --bs-gutter-x: 1.5rem;
-  --bs-gutter-y: 0;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: calc(-1 * var(--bs-gutter-y));
-  margin-right: calc(-.5 * var(--bs-gutter-x));
-  margin-left: calc(-.5 * var(--bs-gutter-x));
-  align-content: space-around;
-  justify-content: space-around;
-  margin-bottom: 20px;
+.signup-form {
+
+  .row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+    align-content: space-around;
+    justify-content: space-around;
+    margin-bottom: 20px;
 
 
-}
+  }
 
-.signup {
+  .signup {
 
-  background: #dee2e6a8;
-  padding: 10px 20px;
-  margin-top: 25px;
-  border-radius: 3px;
-  box-shadow: 1px 1px 2px rgba;
-}
+    background: #dee2e6a8;
+    padding: 10px 20px;
+    margin-top: 25px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px rgba;
+  }
 
-h2 {
+  h2 {
 
-  front-size: 20px;
-  front-weight: bold;
-  margin-bottom: 30px;
-  text-align: center;
-}
+    front-size: 20px;
+    front-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+  }
 
-.bg-img {
-  /* The image used */
-  background-image: url("mountian.jpg");
-   /* Control the height of the image */
-   height: 80vh;
+  .bg-img {
+    /* The image used */
+    background-image: url("mountian.jpg");
+    /* Control the height of the image */
+    height: 80vh;
 
-   /* Center and scale the image nicely */
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: cover;
-   position: relative;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+
+  .button {
+
+    width: 100%;
+  }
 }
