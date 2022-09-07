@@ -8,14 +8,16 @@
   margin-left: calc(-.5 * var(--bs-gutter-x));
   align-content: space-around;
   justify-content: space-around;
+  margin-bottom: 20px;
+
 
 }
 
 .signup {
 
-  background: #b0eced29;
+  background: #dee2e6a8;
   padding: 10px 20px;
-  margin-top: 50px;
+  margin-top: 25px;
   border-radius: 3px;
   box-shadow: 1px 1px 2px rgba;
 }
@@ -26,4 +28,17 @@ h2 {
   front-weight: bold;
   margin-bottom: 30px;
   text-align: center;
+}
+
+.bg-img {
+  /* The image used */
+  background-image: url("mountian.jpg");
+   /* Control the height of the image */
+   height: 80vh;
+
+   /* Center and scale the image nicely */
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   position: relative;
 }

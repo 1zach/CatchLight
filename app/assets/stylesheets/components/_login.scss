@@ -6,20 +6,25 @@
   margin-top: calc(-1 * var(--bs-gutter-y));
   margin-right: calc(-.5 * var(--bs-gutter-x));
   margin-left: calc(-.5 * var(--bs-gutter-x));
+  margin-bottom: 10px;
   align-content: space-around;
   justify-content: space-around;
-
-
-
+  border-radius: 25px;
 }
+
 .login{
 
   text-align: center;
-  background: #b0eced29;
+  background:  #dee2e6a8;
   padding: 10px 20px;
-  margin-top: 50px;
+  margin-top: 40px;
   border-radius: 3px;
   box-shadow: 1px 1px 2px rgba;
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+
 }
 h2 {
 
@@ -40,20 +45,39 @@ h2 {
   line-height: 48px;
   padding: 0 16px;
   width: 332px;
-  background-color:  lightseagreen;
+  background-color:#0d4dfd;
   font-weight:bold;
-
-  &:hover {
-
-    color: aliceblue;
-    background-color:  lightseagreen;
-
-  }
+  border-radius: 25px;
+  color: aliceblue;
+  background-color: #0d6efd;
 }
 
 a {
-    color: #135fd0;
-    text-decoration: underline;
-    cursor: pointer;
-    text-decoration: none;
+  color: #081f98;
+  text-decoration: underline;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.bg-img {
+  /* The image used */
+  background-image: url("mountian.jpg");
+   /* Control the height of the image */
+   height: 80vh;
+
+   /* Center and scale the image nicely */
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   position: relative;
+}
+
+.login-name {
+
+  text-align: center;
+  padding: 20px;
+  front-weight: bold;
+
+
+
 }
