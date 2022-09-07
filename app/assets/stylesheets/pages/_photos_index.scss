@@ -44,14 +44,22 @@
 
   .img_gallery_photo_hover {
     position: absolute;
+
     //background-color: white;
     height: 100%;
     width: 100%;
     z-index: 2;
     opacity: 0;
-    color: red;
     transition: ease-in .1s;
   }
+
+.img_gallery_photo_hover_user {
+  display: flex;
+  height: 85%;
+  width: 100%;
+  justify-content: space-around;
+  align-items: flex-end;
+}
 
   .img_gallery_photo_hover:hover {
     opacity: 1;
@@ -70,7 +78,8 @@
   #img_gallery_text1 {
     position: relative;
     //display: inline-block;
-    top: 0;
+    padding-left: 30px;
+    top: 10px;
     left: 0;
     color: white;
   }
@@ -79,19 +88,18 @@
   #img_gallery_text2 {
     position: relative;
     //display: inline-block;
-    top: 0;
+    bottom: 0;
     left: 100;
     color: white;
-
   }
 
 
   #img_gallery_text3 {
     position: relative;
     //display: inline-block;
-    bottom: 0;
-    color: white;
-
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
   }
 
 
