@@ -20,6 +20,7 @@
   z-index: 100;
   font-family: 'Roboto Mono', monospace;
   width: 750px;
+  
 
   input[type=text]{
     background-color: rgba(255, 255, 255, 0.6);
@@ -48,6 +49,10 @@
     color: white;
 
   }
+}
+
+#search-box {
+  zoom: 1.25;
 }
 
 #index-search-box {
