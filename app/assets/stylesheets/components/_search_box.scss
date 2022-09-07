@@ -1,20 +1,20 @@
 
 //CSS for the whole search box
 .search-box {
+  position: inline-block;
   display: flex;
   justify-content: space-around;
   gap: 10px;
   flex-direction: row;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.911);
   border-radius: 20px;
-  transform: translateX(70vh) !important;
-
+  //transform: translateX(70vh) !important;
   //height: 15vh;
   box-shadow: $box-shadow;
   padding: 20px 40px;
-  position: absolute;
-  bottom: 310px;
-  left: 81px;
+  //position: absolute;
+  //bottom: 310px;
+  //left: 81px;
   margin:0 auto;
   align-items: center;
   z-index: 100;
@@ -32,8 +32,12 @@
   }
 
   input[type=submit]{
-    background-color: rgba(255, 255, 255, 0.6);
-    border: none;
+    //background: rgb(223,51,51);
+    //background: linear-gradient(9deg, rgba(223,51,51,1) 0%, rgba(253,45,45,1) 87%, rgba(236,126,126,1) 100%);
+    background: rgb(223,116,51);
+    background: linear-gradient(9deg, rgba(223,116,51,1) 0%, rgba(253,176,45,1) 87%, rgba(242,194,124,1) 100%);
+
+        border: none;
     margin-left: 50px;
     color: $slider;
     border-radius: $border-radius;
@@ -41,6 +45,7 @@
     text-align: center;
     line-height: normal;
     font-size: 16px;
+    color: white;
 
   }
 }
@@ -59,9 +64,7 @@
     background-color: inherit;
   }
 
-  .location-month {
-    align-items: center;
-  }
+ 
   .btn-black {
     padding: 5px 8px;
     border-radius: $border-radius;
@@ -82,7 +85,7 @@
   //position: absolute;
   //left: 10%;
   -ms-transform: translateY(10%);
-  transform: translateY(15%);
+  //transform: translateY(15%);
 }
 
 .fa-location-dot {
@@ -95,6 +98,7 @@
   justify-content: space-around;
   flex-direction: row;
   gap: 5px;
+  align-items: center;
 }
 
 .range-submit {
@@ -246,7 +250,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .bubble {
-  color: $white;
+  color: $slider;
   padding: 5px 6px;
   border-radius: $border-radius;
   font-size: 12px;
@@ -275,7 +279,7 @@ input[type=range]:focus::-ms-fill-upper {
     justify-content: center !important;
     height: 250px;
     gap: 0px;
-    transform: translateY(0px);
+    //transform: translateY(0px);
 
     .btn-black {
       align-self: center;
