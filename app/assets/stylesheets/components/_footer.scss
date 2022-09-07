@@ -6,7 +6,8 @@
 }
 
 .footer{
-  height: 100vh;
+  margin-top: 50px;
+  height: 50vh;
   width: 100vw;
   bottom: 0;
   background-color: #16161D;
@@ -30,15 +31,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 22vh;
+  margin: 55px;
+
 }
 
 .follow h2{
-  font-size: 90px;
+  font-size: 45px;
   margin: 0;
+  font-family: $headers-font;
 }
-.follow h3{
-  font-size: 90px;
+.follow a{
+  font-size: 45px;
   margin: 0;
 }
 
@@ -48,12 +51,18 @@
   justify-content: center;
 
   i {
-    font-size: 50px;
+    font-size: 25px;
     background-color: white;
+    transition: 0.3s;
     color: #16161D;
-    padding: 20px;
+    padding: 10px;
     border-radius: 50%;
-    margin: 45px;
+    margin: 30px 25px;
+  }
+  i:hover{
+    background-color: #16161D;
+    color: white;
+    transition: 0.3s;
   }
 }
 
@@ -64,45 +73,49 @@
   color: $white !important;
   p {
     margin: 0 80px;
-    color: $white !important;
+
+    font-family: $body-font;
+
+    a{
+      text-decoration: none;
+      color: white;
+    }
+    a:hover{
+      color: lightgrey;
+    }
+
   }
 }
 
 .roll{
   width: 100vw;
-  height: 20%;
   color: white;
-  font-size: 139px;
-  font-family: 'Teko', sans-serif;
-  line-height: 140px;
+  font-size: 46px;
+  font-family: $headers-font;
+  height: 15px;
+  text-align: center;
 }
 
-.marquee {
-  margin: 0 auto;
-  white-space: nowrap;
-  overflow: hidden;
-  position: absolute;
-  color: white;
-  margin-bottom: 0px;
-}
 
-.marquee span {
-  display: inline-block;
-  padding-left: 100%;
-  animation: marquee 5s linear infinite;
-  margin-bottom: 0px;
-}
-
-.marquee2 span {
-  animation-delay: 6s;
-  display: none;
-}
-
-@keyframes marquee {
-  0% {
-    transform: translate(0, 0);
+@media (max-width: 700px) {
+  .network{
+    margin: 30px 16px -21px 16px;
+    a{
+      margin: 0px -5px;
+    }
+    i{
+      padding: 8px;
+    }
   }
-  100% {
-    transform: translate(-100%, 0);
+
+  .copyright{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    margin-bottom: 20px;
   }
+}
+
+@media (max-width: 1200px) {
 }
