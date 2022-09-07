@@ -1,21 +1,62 @@
 .banner {
-    background-size: cover;
-    background-position: center;
-    padding: 150px 0;
-    background-image: url("/app/assets/images/DSC_3244.jpg");
+  background-image: asset-url("banner.jpg") !important;
+  background-size: cover;
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+
+
+
+.half-background {
+  background-color: $black;
+  opacity: .7;
+
+  width: 300px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 40px;
+  //margin: 100px;
+  font-size: 36px;
+  color: white;
+  margin: 100px 50px 100px 50px;
+  padding: 20px;
+}
+
+.banner h1 {
+  color: $dark-white;
+  font-size: 64px;
+}
+
+.banner p {
+  color: $dark-white;
+}
+
+
+@media (max-width: 1200px) {
+  .half-background {
+      margin: 0;
+      transform: translateY(-15%);
   }
-  
-  .banner h1 {
+}
+
+@media (max-width: 700px) {
+
+  .banner {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+  }
+  .half-background {
     margin: 0;
-    color: white;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-    font-size: 32px;
-    font-weight: bold;
+    padding: 0;
+    transform: translateY(-15%);
+    width: 35vh !important;
   }
-  
-  .banner p {
-    font-size: 20px;
-    color: white;
-    opacity: .7;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  }
+}
