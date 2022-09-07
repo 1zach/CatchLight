@@ -1,6 +1,12 @@
 <div class = "img_gallery_photo_hover">
-  <p id= "img_gallery_text1"><%=photo.creator%></p>
-  <p id = "img_gallery_text2">Lat: <%=photo.latitude%> Long: <%=photo.longitude%></p>
-  <p id = "img_gallery_text3"><%=photo.creation_date_time%></p>
+  <p id = "img_gallery_text1"><i class="fa-solid fa-heart"></i></p>
+  <div class = "img_gallery_photo_hover_user">
+    <p id= "img_gallery_text2"><%=photo.creator%></p>
+    <% if photo.flickr? %>
+    <%= %>
+    <% else %>
+    <%= cl_image_tag "#{photo.user.photo.key}", id: "img_gallery_text3"%>
+    <% end %>
+  </div>
 </div>
 <img src="<%= photo.url %>" class = "img_gallery_photo" alt="">

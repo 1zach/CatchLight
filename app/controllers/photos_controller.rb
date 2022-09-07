@@ -37,17 +37,17 @@ class PhotosController < ApplicationController
   end
 
   def show
-    
+
     if params[:flickr]
       @photo = Photo.new(
         url: params[:url],
         focal_length: exif("Focal Length").nil? ? 'None' : exif("Focal Length").first,
         aperture: exif("Aperture").nil? ? 'None' : exif("Aperture").first,
-        creation_date_time: exif("Date and Time (Original)").nil? ? 'None' : creation_date_time_formatter(exif("Date and Time (Original)").first), 
+        creation_date_time: exif("Date and Time (Original)").nil? ? 'None' : creation_date_time_formatter(exif("Date and Time (Original)").first),
         camera: exif("Model").nil? ? 'None' : exif("Model").first,
         location: [params["latitude"], params["longitude"]]
       )
-      
+
       @markers = [
         {
           lat: params['latitude'],
@@ -56,7 +56,7 @@ class PhotosController < ApplicationController
           info_window: render_to_string(partial: "info_window", locals: {photo: @photo})
         }
       ]
-      
+
     else
       set_photo
       
@@ -70,8 +70,8 @@ class PhotosController < ApplicationController
 
       ]
     end
-    
-      
+
+
   end
 
   def new
@@ -81,7 +81,9 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.user = current_user
+
     @time = creation_date_time_formatter(photo_params["creation_date_time"]) 
+
     @photo.creation_date_time = @time
 
     @photo.creator = current_user.first_name
@@ -164,7 +166,7 @@ class PhotosController < ApplicationController
 
   def get_exif
     raw_exif = get_flickr_additional_information(params[:id]).exif
-    useful_exif = raw_exif.select { |hash| hash['tag'] == "Lens" || 
+    useful_exif = raw_exif.select { |hash| hash['tag'] == "Lens" ||
     hash['tag'] == "FNumber" ||
     hash['tag'] == "Aperture" ||
     hash['tag'] == "Model" ||
@@ -174,20 +176,20 @@ class PhotosController < ApplicationController
     }
       new_exif = useful_exif.map do |hash|
         {hash['label'] => hash['raw']}
-      end 
+      end
 
-      
+
     end
-     
+
 
   def exif(value)
     get_exif
-    exif_value = get_exif.find do |hash| 
+    exif_value = get_exif.find do |hash|
       if hash.key?(value)
         return hash.values
       end
     end
-    
+
    return exif_value
   end
 

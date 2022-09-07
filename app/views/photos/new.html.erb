@@ -1,18 +1,29 @@
+<div class="container-new-photo">
+
 <h1>Make a new photo</h1>
 
 <%= form_with model: @photo, local: true do |form| %>
 
   <div data-controller="image-preview">
-    <img width='500px' style='display: none' src="#" data-image-preview-target="output">
+    <img width='300px' style='display: none' src="#" data-image-preview-target="output">
 
-    <div class="my-2">
-      <%= form.file_field :photo,
-        :class => "form-control-file photo_upload",
-        data: {
-          image_preview_target: "input",
-          action: "image-preview#readURL"
-        } %>
-    </div>
+
+
+
+      <div class="wrapper">
+        <div class="file-upload">
+          <div class="my-2">
+              <%= form.file_field :photo,
+                :class => "form-control-file photo_upload",
+                data: {
+                  image_preview_target: "input",
+                  action: "image-preview#readURL"
+                } %>
+            </div>
+          <i class="fa fa-arrow-up"></i>
+        </div>
+      </div>
+
     <p style="color: red; display: none;" data-image-preview-target="warning">No location on this photo, it is not possible to upload it.</p>
 
     <div class="my-2" style="display: none;">
@@ -70,4 +81,5 @@
   </div>
   <% end %>
 
-  <div style="height: 60vh;"></div>
+
+</div>

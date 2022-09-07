@@ -50,16 +50,6 @@
       <% end %>
     </ul>
   </div>
-
-
-  <ul class = "image-user">
-    <% @user.favorites.each do |favorite| %>
-      <li>
-        <% photo = Photo.find(favorite.favoritable_id)%>
-        <%=display_photo(photo)%>
-      </li>
-    <% end %>
-  </ul>
 </div>
 
 
