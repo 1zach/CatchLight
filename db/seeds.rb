@@ -8,11 +8,11 @@ User.destroy_all
 
 puts "Generating Users ..."
 
-user1 = User.create(email: "coco@gmail.com", first_name: "Corentin",  username: "corentinv", password: "123456", photo: "")
-user2 = User.create(email: "zach@gmail.com", first_name: "Zach",  username: "1zach", password: "123456", photo: "")
-user3 = User.create(email: "steph@gmail.com", first_name: "Stephane", username: "stephasme", password: "123456", photo: "")
-user4 = User.create(email: "tenzayn@gmail.com", first_name: "Tenzayn", username: "tenzayn", password: "123456", photo: "")
-User.create(email: "ambroise@gmail.com", first_name: "Ambroise", username: "ambbuck", password: "123456", photo: "")
+user1 = User.create(email: "coco@gmail.com", first_name: "Corentin",  username: "corentinv", password: "123456")
+user2 = User.create(email: "zach@gmail.com", first_name: "Zach",  username: "1zach", password: "123456")
+user3 = User.create(email: "steph@gmail.com", first_name: "Stephane", username: "stephasme", password: "123456")
+user4 = User.create(email: "tenzayn@gmail.com", first_name: "Tenzayn", username: "tenzayn", password: "123456")
+User.create(email: "ambroise@gmail.com", first_name: "Ambroise", username: "ambbuck", password: "123456")
 
 puts "#{User.all.count} users"
 
