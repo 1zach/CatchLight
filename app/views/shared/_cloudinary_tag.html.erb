@@ -1,5 +1,8 @@
 <div class = "img_gallery_photo_hover">
-  <p id = "img_gallery_text1"><i class="fa-solid fa-heart"></i></p>
+  <div class="img_gallery_photo_hover_info">
+    <p id = "img_gallery_text1"><i class="fa-solid fa-heart"></i></p>
+    <p id = "img_gallery_text4"> <%=photo.creation_date_time.strftime("%I:%M%p")%></p>
+  </div>
   <div class = "img_gallery_photo_hover_user">
     <p id= "img_gallery_text2"><%=photo.creator%></p>
     <%= cl_image_tag "#{photo.user.photo.key}", id: "img_gallery_text3"%>

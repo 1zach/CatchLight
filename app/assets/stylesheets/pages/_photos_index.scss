@@ -6,7 +6,7 @@
     padding: 0;
     max-width: 60%;
 
-    
+
   }
 
   #photo-index-h1 {
@@ -15,9 +15,9 @@
     margin-bottom: 30px;
     text-align: center;
     font-size: 64px;
-    
- 
-    
+
+
+
   }
 
   .image-gallery > li {
@@ -72,6 +72,13 @@
   width: 100%;
   justify-content: space-around;
   align-items: flex-end;
+  padding-bottom: 20px;
+}
+
+.img_gallery_photo_hover_info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
   .img_gallery_photo_hover:hover {
@@ -94,6 +101,12 @@
     padding-left: 30px;
     top: 10px;
     left: 0;
+    color: white;
+  }
+
+  #img_gallery_text4 {
+    position: relative;
+    padding:  10px 20px 0 0;
     color: white;
   }
 
