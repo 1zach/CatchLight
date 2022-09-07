@@ -1,0 +1,28 @@
+.liked-cards {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.liked-card {
+  overflow: hidden;
+  height: 40vh;
+  width: 250px;
+  background: $white;
+  box-shadow: $box-shadow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+
+}
+
+.liked-card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.liked-card .use-card-infos {
+  padding: 16px;
+}
