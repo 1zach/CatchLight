@@ -16,14 +16,13 @@
 <div class = "info-and-map">
 
   <div class = "address-time">
-    <h2>Photo Information</h2>
-    <p id = "address" ><span class = "labels">Address:</span> <%= address.first.address%></p>
+    <p id = "address" ><span class = "labels"><i class="fa-solid fa-location-dot"></i></span> <%= address.first.address%></p>
     <% photo_time = @photo.creation_date_time.nil? ? 'Unknown Time' : @photo.creation_date_time.strftime("%A %d %B at %I:%M%p") %>
 
-    <p><span class = "labels">Date: </span><%= photo_time %>
-    <p><span class = "labels">Camera: </span><%= @photo.camera %></p>
-    <p><span class = "labels">Focal length: </span><%= @photo.focal_length %></p>
-    <p><span class = "labels">Aperture: </span><%= @photo.aperture.to_f.round(2) %></p>
+    <p><span class = "labels"><i class="fa-regular fa-calendar-days"></i> </span><%= photo_time %>
+    <p><span class = "labels"><i class="fa-solid fa-camera"></i> </span><%= @photo.camera %></p>
+    <p><span class = "labels"><i class="fa-solid fa-camera-retro"></i> </span><%= @photo.focal_length %></p>
+    <p><span class = "labels"><i class="fa-solid fa-record-vinyl"></i> </span><%= @photo.aperture.to_f.round(2) %></p>
 
     <div class="row_button">
       <button onclick="history.back()"  class="btn-back"><i class="fa-solid fa-angle-left"></i></button>
