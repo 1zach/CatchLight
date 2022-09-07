@@ -70,8 +70,10 @@
   display: flex;
   align-items: bottom;
   justify-content: center;
+  color: $white !important;
   p {
     margin: 0 80px;
+
     font-family: $body-font;
 
     a{
@@ -81,6 +83,7 @@
     a:hover{
       color: lightgrey;
     }
+
   }
 }
 
