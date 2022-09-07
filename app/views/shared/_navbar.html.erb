@@ -2,7 +2,7 @@
   <div class="container-fluid">
 
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "logo-transparent.png" %>
+     <h2><%= image_tag "logo-transparent.png" %>ATCHLIGHT</h2>
     <% end %>
         <%=render "shared/navbar_search_box"%>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation opacity-100">
@@ -22,7 +22,7 @@
             <%if current_user.photo.attached?%>
                <%= cl_image_tag "#{current_user.photo.key}", class: "avatar"%>
             <% else%>
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar", alt: "avatar" %>
             <% end%>
 
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
