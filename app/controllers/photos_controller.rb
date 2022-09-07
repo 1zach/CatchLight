@@ -59,6 +59,7 @@ class PhotosController < ApplicationController
       
     else
       set_photo
+      
       @markers = [
         {
           lat: @photo.latitude,
@@ -80,8 +81,7 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.user = current_user
-
-    creation_date_time_formatter(photo_params["creation_date_time"]) 
+    @time = creation_date_time_formatter(photo_params["creation_date_time"]) 
     @photo.creation_date_time = @time
 
     @photo.creator = current_user.first_name
