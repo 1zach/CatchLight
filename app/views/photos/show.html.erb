@@ -17,7 +17,7 @@
 
   <div class = "address-time">
     <p id = "address" ><span class = "labels"><i class="fa-solid fa-location-dot"></i></span> <%= address.first.address%></p>
-    
+
     <% photo_time = @photo.creation_date_time.nil? ? 'Unknown Time' : @photo.creation_date_time.strftime("%A %d %B at %I:%M%p") %>
 
     <p><span class = "labels"><i class="fa-regular fa-calendar-days"></i> </span><%= photo_time %>
@@ -39,7 +39,13 @@
           <% end %>
         <% end %>
       <%end%>
-        
+        <% if current_user == @photo.user %>
+        <div>
+          <%= link_to photo_path(@photo), data: { turbo_method: :delete, turbo_confirm: "Please, we need your photo"}, class: 'btn-back' do%>
+          <i class="fa-solid fa-trash"></i>
+          <% end %>
+        </div>
+      <%end%>
     </div>
   </div>
 
