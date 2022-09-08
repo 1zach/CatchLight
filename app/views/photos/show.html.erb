@@ -17,6 +17,7 @@
 
   <div class = "address-time">
     <p id = "address" ><span class = "labels"><i class="fa-solid fa-location-dot"></i></span> <%= address.first.address%></p>
+    
     <% photo_time = @photo.creation_date_time.nil? ? 'Unknown Time' : @photo.creation_date_time.strftime("%A %d %B at %I:%M%p") %>
 
     <p><span class = "labels"><i class="fa-regular fa-calendar-days"></i> </span><%= photo_time %>

@@ -47,7 +47,6 @@ class PhotosController < ApplicationController
         camera: exif("Model").nil? ? 'None' : exif("Model").first,
         location: [params["latitude"], params["longitude"]]
       )
-
       @markers = [
         {
           lat: params['latitude'],
@@ -80,9 +79,7 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.user = current_user
-
     @time = creation_date_time_formatter(photo_params["creation_date_time"]) 
-
     @photo.creation_date_time = @time
 
     @photo.creator = current_user.first_name
@@ -193,7 +190,7 @@ class PhotosController < ApplicationController
   end
 
   def creation_date_time_formatter(value)
-    "#{value.to_date.to_fs} #{value[-8..-1]}".to_datetime
+    "#{value.gsub(/:/, '-').to_date.to_fs} #{value[-8..-1]}".to_datetime
   end
   #end
 
