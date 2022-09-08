@@ -5,11 +5,6 @@
   </div>
   <div class = "img_gallery_photo_hover_user">
     <p id= "img_gallery_text2"><%=photo.creator%></p>
-    <% if photo.flickr? %>
-      <%= %>
-    <% else %>
-      <%= cl_image_tag "#{photo.user.photo.key}", id: "img_gallery_text3"%>
-    <% end %>
   </div>
 </div>
 <img src="<%= photo.url %>" class = "img_gallery_photo" alt="">
