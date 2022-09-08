@@ -35,18 +35,18 @@
 }
 
 #address {
-
-    width: 50%;
+    width: 80%;
 }
 
 .address-time {
     color: black;
     display: flex;
+    font-size: 20px;
     flex-direction: column;
     background-color: white;
-    padding: 10px;
+    padding: 10px 10px 10px 30px ;
     margin: 20px;
-    width: 33%;
+    width: 50%;
 
     .btn-back {
         color: black;
@@ -57,6 +57,7 @@
         margin: 5px;
         display: inline-block;
         transition: 0.3s;
+        font-size: 15px;
     }
 
     .btn-back:hover {
@@ -69,6 +70,8 @@
 
 .info-and-map {
     display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
 }
 
 .labels {
@@ -82,7 +85,7 @@
 
 
 .show-map{
-  width: 60%;
+  width: 30%;
 }
 
 @media (max-width: 700px) {
