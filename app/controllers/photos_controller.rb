@@ -67,7 +67,6 @@ class PhotosController < ApplicationController
           url: @photo.url,
           info_window: render_to_string(partial: "info_window", locals: {photo: @photo})
         }
-
       ]
     end
 
