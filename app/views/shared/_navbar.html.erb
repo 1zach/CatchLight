@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
 
-    <%= link_to root_path, class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand", data: {"turbo": false} do %>
      <h2><%= image_tag "logo-small.png" %>ATCHLIGHT</h2>
     <% end %>
         <%=render "shared/navbar_search_box"%>
@@ -17,7 +17,7 @@
             <%#= link_to "Home", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Profile", user_path(current_user), class: "nav-link"  %>
+            <%= link_to "Profile", user_path(current_user), class: "nav-link", data: {"turbo": false}  %>
           </li>
           <li class="nav-item dropdown">
             <%if current_user.photo.attached?%>
