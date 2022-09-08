@@ -1,7 +1,7 @@
 <div class = "search-box" id = "navbar-search-box">
 <div class = "location-month">
   <div class="date-month">
-    <%= form_with url: photos_path, method: :get, class: "d-flex" do %>
+    <%= form_with url: photos_path, method: :get, class: "d-flex", data: {"turbo": false} do %>
       <label for="location">  <i class="fa-sharp fa-fw fa-solid fa-location-dot"></i></label>
       <%= text_field_tag :query_location,
         params[:query_location],

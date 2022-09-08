@@ -1,5 +1,5 @@
 
-<h1 id = "photo-index-h1"><%=params[:query_location]%> <%=params[:query_radius]%>km <%=params[:query_month]%></h1>
+<h1 id = "photo-index-h1"><%=params[:query_location]%> - <%=Date::MONTHNAMES[(params[:query_month]).to_i]%> - <%=params[:query_radius]%>km </h1>
 
 
 <div class = "d-flex image-map-container" data-controller = "resizer" data-resizer-target = "parent">
@@ -17,12 +17,13 @@
     <% @photos.each do |photo| %>
       <li>
       <%if photo.flickr%>
-        <%= link_to photo_path(flickr: true, url: photo.url, id: photo.id, longitude: photo.longitude, latitude: photo.latitude) do %>
-          <%= display_photo(photo) %>
+
+        <%= link_to photo_path(flickr: true, url: photo.url, id: photo.id, longitude: photo.longitude, latitude: photo.latitude) , data: {"turbo": false} do %>
+          <%= index_photo(photo) %>
         <%end%>
       <%else%>
-        <%= link_to photo_path(photo) do%>
-          <%= display_photo(photo)%>
+        <%= link_to photo_path(photo) , data: {"turbo": false} do%>
+          <%= index_photo(photo)%>
         <%end%>
       <% end %>
       </li>
