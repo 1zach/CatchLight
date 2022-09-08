@@ -17,12 +17,13 @@
     <% @photos.each do |photo| %>
       <li>
       <%if photo.flickr%>
-        <%= link_to photo_path(flickr: true, url: photo.url, id: photo.id, longitude: photo.longitude, latitude: photo.latitude), data: {"turbo": false}  do %>
-          <%= display_photo(photo) %>
+
+        <%= link_to photo_path(flickr: true, url: photo.url, id: photo.id, longitude: photo.longitude, latitude: photo.latitude) , data: {"turbo": false} do %>
+          <%= index_photo(photo) %>
         <%end%>
       <%else%>
-        <%= link_to photo_path(photo), data: {"turbo": false}  do%>
-          <%= display_photo(photo)%>
+        <%= link_to photo_path(photo) , data: {"turbo": false} do%>
+          <%= index_photo(photo)%>
         <%end%>
       <% end %>
       </li>
