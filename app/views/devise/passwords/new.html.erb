@@ -1,47 +1,29 @@
-<div class="forgotyourpassword">
+<div class="forgotyourpassword-form">
   <div class="bg-img">
     <div class="contianer">
       <div class="row">
         <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-          <div class="signup">
-            <%# i created four new div classes which is container, row, colums, signup - by ( enzin) %>
-
-
-            <h2>Forgot your password</h2>
-            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+          <div class="forgotyourpassword">
+            <%# i created four new div classes which is container, row, colums, forgotyourpassword - by ( Tenzin )%>
+            <h2>Forgot your password?</h2>
+            <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
             <%= f.error_notification %>
 
             <div class="form-inputs">
               <%= f.input :email,
               required: true,
               autofocus: true,
-              input_html: { autocomplete: "email" }%>
-              <%= f.input :first_name,
-              required: true %>
-              <%= f.input :username,
-              require: true %>
-              <%= f.input :password,
-              required: true,
-              hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-              input_html: { autocomplete: "new-password" } %>
-              <%= f.input :password_confirmation,
-              required: true,
-              input_html: { autocomplete: "new-password" } %>
-
+              input_html: { autocomplete: "email" } %>
             </div>
 
             <div class="form-actions">
-              <%= f.button :submit, "Submit" %>
+              <%= f.button :submit, " reset your password " %>
             </div>
             <% end %>
+
+
             <%= render "devise/shared/links" %>
-
-
           </div>
-
-
-
-
         </div>
       </div>
     </div>
