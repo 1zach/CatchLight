@@ -28,9 +28,10 @@ class PhotosController < ApplicationController
     end
     @markers = @photos.map do |photo|
       {
+        id: photo.id,
         lat: photo.latitude,
         lng: photo.longitude,
-        url: photo.url,
+        url: photo.url || photo.photo.url,
         info_window: render_to_string(partial: "info_window", locals: {photo: photo})
       }
     end
