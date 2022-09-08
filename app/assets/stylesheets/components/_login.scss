@@ -6,22 +6,29 @@
   margin-top: calc(-1 * var(--bs-gutter-y));
   margin-right: calc(-.5 * var(--bs-gutter-x));
   margin-left: calc(-.5 * var(--bs-gutter-x));
+  margin-bottom: 10px;
   align-content: space-around;
   justify-content: space-around;
-
-
-
+  border-radius: 25px;
 }
+
 .login{
-  text-align: center;
-  background: #b0eced29;
 
+  text-align: center;
+  background:  #dee2e6a8;
   padding: 10px 20px;
-  margin-top: 50px;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
+  margin-top: 40px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 2px rgba;
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
 }
-h2 {
+
+
+.login-form {
+
 
   font-size: 20px;
   line-height: 22px;
@@ -33,26 +40,32 @@ h2 {
 
 .btn {
   border: none;
-  border-radius: 6px;
   font-size: 20px;
   line-height: 48px;
   padding: 0 16px;
-  width: 332px;
-  background-color:  lightseagreen;
+  width: 100%;
+  background-color:#0edae9a2;
   font-weight:bold;
+  color: rgb(30, 31, 32);
 
-  &:hover {
-
-    color: aliceblue;
-    background-color:  lightseagreen;
-
-  }
 }
 
-a {
-    color: #135fd0;
-    text-decoration: underline;
-    cursor: pointer;
-    text-decoration: none;
 
+.bg-img {
+  /* The image used */
+  background-image: url("mountian.jpg");
+  /* Control the height of the image */
+  height: 80vh;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.form-control {
+  width: 100%;
+  background-color: white;
+  border: 1px solid #4f4f4f;
 }
