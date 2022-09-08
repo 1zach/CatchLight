@@ -38,6 +38,7 @@
       height: 60px;
       width: 60px;
       transition: ease-in .2s !important;
+      z-index:5;
   }
   .marker:hover {
       z-index: 10;

@@ -6,7 +6,7 @@
     padding: 0;
     max-width: 60%;
 
-    
+
   }
 
   #photo-index-h1 {
@@ -15,9 +15,9 @@
     margin-bottom: 30px;
     text-align: center;
     font-size: 64px;
-    
- 
-    
+
+
+
   }
 
   .image-gallery > li {
@@ -72,13 +72,21 @@
   width: 100%;
   justify-content: space-around;
   align-items: flex-end;
+  padding-bottom: 20px;
+}
+
+.img_gallery_photo_hover_info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
   .img_gallery_photo_hover:hover {
     opacity: 1;
-    background-color: rgba(128, 128, 128, 0.425);
+    
+    
+    background: radial-gradient(circle, rgba(0,0,0,0.08869485294117652) 0%, rgba(0,0,0,0.2987788865546218) 100%);
   }
-
   .img_gallery_text {
 
     background-color: green;
@@ -94,6 +102,12 @@
     padding-left: 30px;
     top: 10px;
     left: 0;
+    color: white;
+  }
+
+  #img_gallery_text4 {
+    position: relative;
+    padding:  10px 20px 0 0;
     color: white;
   }
 
