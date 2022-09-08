@@ -23,27 +23,18 @@ export default class extends Controller {
       
     const customMarker = document.createElement("div")
     customMarker.className = "marker"
-    customMarker.idName = "custom_marker"
-    // if (marker['url'] === nil) {
-    //   console.log("I'm nil")
-    //   customMarker.style.backgroundImage = "/app/assets/images/logo-small.png"
-    // } else {
-     customMarker.style.backgroundImage = `url('${marker.url}')`
-    // }
-
+    customMarker.id = `custom_marker_${marker.id}`  
+    customMarker.style.backgroundImage = `url('${marker.url}')`
     customMarker.style.backgroundSize = "contain"
-    //customMarker.style.width = "40px"
-    //customMarker.style.height = "40px"
-    //customMarker.style.borderRadius = "50%"
     customMarker.style.border = "1px solid white"
 
 
-      new mapboxgl.Marker(customMarker)
+    let mmarker = new mapboxgl.Marker(customMarker)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(this.map)
     })
-  }
+ }
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()

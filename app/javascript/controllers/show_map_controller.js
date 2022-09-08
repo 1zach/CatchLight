@@ -13,7 +13,7 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
     })
-    this.#addMarkersToMap()
+    //this.#addMarkersToMap()
     this.#fitMapToMarkers()
   }
 
@@ -24,6 +24,8 @@ export default class extends Controller {
     const customMarker = document.createElement("div")
     customMarker.className = "marker"
     customMarker.idName = "custom_marker"
+    customMarker.id = `custom_marker_${marker.id}`  
+
     // if (marker['url'] === nil) {
     //   console.log("I'm nil")
     //   customMarker.style.backgroundImage = "/app/assets/images/logo-small.png"
@@ -35,7 +37,7 @@ export default class extends Controller {
     //customMarker.style.width = "40px"
     //customMarker.style.height = "40px"
     //customMarker.style.borderRadius = "50%"
-    customMarker.style.border = "1px solid white"
+    customMarker.style.border = "1px solid red"
 
 
       new mapboxgl.Marker(customMarker)
