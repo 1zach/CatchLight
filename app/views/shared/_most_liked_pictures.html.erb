@@ -1,0 +1,46 @@
+<div class="container">
+  <br>
+  <h1>Most liked pictures</h1>
+
+  <div class="liked-cards">
+    <%= link_to photo_path(User.find_by(first_name:"Stephane").photos.last.id) do %>
+        <div class="liked-card">
+        <% if User.find_by(first_name:"Stephane").photos.last.url%>
+          <%= image_tag User.find_by(first_name:"Stephane").photos.last.url %>
+        <% else %>
+          <%= cl_image_tag User.find_by(first_name:"Stephane").photos.last.photo.key, crop: :fill %>
+        <% end %>
+        </div>
+    <%end%>
+
+    <%= link_to photo_path(User.find_by(first_name:"Corentin").photos.last.id) do %>
+      <div class="liked-card">
+        <% if User.find_by(first_name:"Corentin").photos.last.url%>
+          <%= image_tag User.find_by(first_name:"Corentin").photos.last.url %>
+        <% else %>
+          <%= cl_image_tag User.find_by(first_name:"Corentin").photos.last.photo.key, crop: :fill %>
+        <% end %>
+      </div>
+    <%end%>
+
+    <%= link_to photo_path(User.find_by(first_name:"Zach").photos.last.id) do %>
+      <div class="liked-card">
+        <% if User.find_by(first_name:"Zach").photos.last.url%>
+          <%= image_tag User.find_by(first_name:"Zach").photos.last.url %>
+        <% else %>
+          <%= cl_image_tag User.find_by(first_name:"Zach").photos.last.photo.key, crop: :fill %>
+        <% end %>
+      </div>
+    <%end%>
+
+    <%= link_to photo_path(User.find_by(first_name:"Tenzayn").photos.last.id) do %>
+      <div class="liked-card">
+        <% if User.find_by(first_name:"Tenzayn").photos.last.url%>
+          <%= image_tag User.find_by(first_name:"Tenzayn").photos.last.url %>
+        <% else %>
+          <%= cl_image_tag User.find_by(first_name:"Tenzayn").photos.last.photo.key, crop: :fill %>
+        <% end %>
+      </div>
+    <%end%>
+  </div>
+</div>

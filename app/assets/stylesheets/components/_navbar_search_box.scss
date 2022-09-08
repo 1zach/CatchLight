@@ -1,0 +1,39 @@
+#navbar-search-box {
+    padding: 0;
+    box-shadow: none;
+    justify-content: center;
+    border-radius: 30%;
+    transition:cubic-bezier(0.645, 0.045, 0.355, 1) .5s;
+    &:hover {
+        transform: scale(1.2);
+        padding: 50px 0 10px 0;
+        border-radius: 4px;
+    }
+}
+#location-box {
+    border: 1px solid $slider;
+    height: 41.5px;
+    text-align: left;
+    
+}
+
+#calendar-box {
+    border: 1px solid $slider;
+    border-radius: 5px;
+    width: 125px;
+}
+
+#submit {
+    padding: 10px;
+    margin: 0;
+}
+
+
+#range-slider {
+    flex-direction: row;
+}
+
+#month {
+    padding: 8px 0px !important;
+    color: $slider;
+}

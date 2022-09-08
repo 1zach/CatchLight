@@ -1,7 +1,7 @@
 <div class = "search-box" id = "search-box">
 <div class = "location-month">
   <div class="date-month">
-    <%= form_with url: photos_path, method: :get, class: "d-flex" do %>
+    <%= form_with url: photos_path, method: :get, class: "d-flex", data: {"turbo": false} do %>
       <label for="location">  <i class="fa-sharp fa-fw fa-solid fa-location-dot"></i></label>
       <%= text_field_tag :query_location,
         params[:query_location],
@@ -32,22 +32,10 @@
     <input type = "range" name="query_radius" id ="radius"
       min=".5" max="5.0" step = ".5" default = ".5" data-slider-target = "range">
       <label for="radius"></label>
-      <output class="bubble"  data-slider-target = "bubble">Search Radius: 2.5 km</output>
+      <output class="bubble"  data-slider-target = "bubble">Radius: 2.5 km</output>
   </div>
 
-
-  <%# <div class="time-in-day">
-    <input type="button" id="timeline1" value="morning">
-    <label for="6AM-9AM"></label><br>
-
-    <input type="button" id="timeline1" value="afternoon">
-    <label for="6AM-9AM"></label><br>
-
-    <input type="button" id="timeline1" value="night-time">
-    <label for="6AM-9AM"></label><br>
-  </div> %>
-
-    <%= submit_tag "Search", class: "btn-black" %>
+    <%= submit_tag "Search", class: "btn-black"%>
   <% end %>
   </div>
 </div>

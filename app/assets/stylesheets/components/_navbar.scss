@@ -6,10 +6,15 @@
 //   background-color: transparent;
 // }
 
-
+.navbar {
+  h2 {
+    margin-bottom: 0;
+  }
+  
+}
 .navbar-lewagon {
   justify-content: space-between;
-  height: 50px;
+  height: 60px;
   position: sticky;
   background-color: $white;
   top: 0;
@@ -23,3 +28,4 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+

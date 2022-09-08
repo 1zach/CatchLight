@@ -1,54 +1,55 @@
-<h1>Working</h1>
 
-<br>
- <% if @photo.id%>
-    <% if current_user == nil %>
+<div class = "photo-show-banner">
 
-
-    <% elsif current_user.favorited?(@photo) %>
-      <%= button_to toggle_favorite_photo_path(@photo), method: :post, class: 'coeur' do%>
-        <i class="fas fa-heart red-tog"></i>
-      <% end %>
-      </div>
-    <% else %>
-      <%= button_to toggle_favorite_photo_path(@photo), method: :post, class: 'coeur' do%>
-        <i class="fas fa-heart"></i>
-      <% end %>
-      </div>
-    <% end %>
-    <%end%>
-
-<div class="show-map">
+  <% if params[:flickr]%>
+    <%address =  Geocoder.search([params['latitude'], params['longitude']])%>
+  <%else%>
+    <%address =  Geocoder.search([@photo.latitude, @photo.longitude])%>
+  <%end%>
   <div class="user-show-photo">
-
-
     <%= show_photo(@photo) %>
-
   </div>
+</div>
 
-  <div class="show-content">
-    <h2>A photo taken by <%= @photo.creator %></h2>
-    <p>Focal length : <%= @photo.focal_length %></p>
-    <% photo_time = @photo.creation_date_time.strftime("%A %d %B at %I:%M%p") %>
-    <p>A photo taken the <%= photo_time %></p>
 
-    <p>Camera : <%= @photo.camera %></p>
-    <p>Aperture : <%= @photo.aperture.to_f.round(2) %></p>
-    <p>Location : <%= @photo.location %></p>
-    <br>
 
-     <% if current_user = @photo.user %>
-      <div>
-        <%= link_to "Destroy this photo", photo_path(@photo), data: { turbo_method: :delete, turbo_confirm: "Please, we need your photo"}%>
-      </div>
-    <%end%>
-    <br>
-    <br>
+<div class = "info-and-map">
 
-    <div style="width: 500px; height: 400px;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div class = "address-time">
+    <p id = "address" ><span class = "labels"><i class="fa-solid fa-location-dot"></i></span> <%= address.first.address%></p>
+    
+    <% photo_time = @photo.creation_date_time.nil? ? 'Unknown Time' : @photo.creation_date_time.strftime("%A %d %B at %I:%M%p") %>
+
+    <p><span class = "labels"><i class="fa-regular fa-calendar-days"></i> </span><%= photo_time %>
+    <p><span class = "labels"><i class="fa-solid fa-camera"></i> </span><%= @photo.camera %></p>
+    <p><span class = "labels"><i class="fa-solid fa-camera-retro"></i> </span><%= @photo.focal_length %></p>
+    <p><span class = "labels"><i class="fa-solid fa-record-vinyl"></i> </span><%= @photo.aperture.to_f.round(2) %></p>
+
+    <div class="row_button">
+      <button onclick="history.back()"  class="btn-back"><i class="fa-solid fa-angle-left"></i></button>
+      <% if @photo.id%>
+        <% if current_user == nil %>
+        <% elsif current_user.favorited?(@photo) %>
+          <%= button_to toggle_favorite_photo_path(@photo), method: :post, class: 'coeur btn-back' do%>
+            <i class="fas fa-heart red-tog"></i>
+          <% end %>
+        <% else %>
+          <%= button_to toggle_favorite_photo_path(@photo), method: :post, class: 'coeur btn-back' do%>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        <% end %>
+      <%end%>
+        
     </div>
   </div>
+
+
+  <div class="show-map">
+      <div class = "show-page-map"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+  </div>
+ <%# finish info-and-map div  %>
 </div>

@@ -10,6 +10,37 @@
 
 .user-info-options {
   display: flex;
-  justify-content: space-around;
-  padding: 50px 0 50px 0;
+  justify-content: space-between;
+  padding: 50px 50px 50px 50px;
+}
+
+.image-user {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  padding: 30px 0px 0px 0px
+}
+
+.image-user li img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  vertical-align: middle;
+}
+
+.image-user > li {
+  height: 300px;
+  cursor: pointer;
+  position: relative;
+  flex-grow: 1;
+  list-style: none;
+}
+
+.user-info {
+  display: flex;
+}
+
+.user-0-photos {
+  text-align: center;
+  margin-top: 100px;
 }

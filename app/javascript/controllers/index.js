@@ -13,8 +13,11 @@ application.register("image-preview", ImagePreviewController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
-//import ResizerController from "./resizer_controller"
-//application.register("resizer", ResizerController)
+import ResizerController from "./resizer_controller"
+application.register("resizer", ResizerController)
+
+import ShowMapController from "./show_map_controller"
+application.register("show-map", ShowMapController)
 
 import SliderController from "./slider_controller"
 application.register("slider", SliderController)

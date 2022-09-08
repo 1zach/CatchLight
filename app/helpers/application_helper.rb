@@ -15,4 +15,12 @@ module ApplicationHelper
       end
     end
 
+    def index_photo(photo)
+      if photo.photo.key
+        render 'shared/hover_cloudinary_tag', photo: photo
+      else
+        render 'shared/hover_image_tag', photo: photo
+      end
+    end
+
 end

@@ -28,7 +28,7 @@ export default class extends Controller {
     //   console.log("I'm nil")
     //   customMarker.style.backgroundImage = "/app/assets/images/logo-small.png"
     // } else {
-     customMarker.style.backgroundImage = `url('${marker.url}')`
+     customMarker.style.backgroundImage = `/app/assets/images/logo-small.png`
     // }
 
     customMarker.style.backgroundSize = "contain"

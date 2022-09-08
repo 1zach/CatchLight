@@ -38,3 +38,26 @@
   background: linear-gradient($light-blue-hover, $blue-hover);
   color: $white;
 }
+
+.btn-back {
+  text-decoration: none;
+  color: $black;
+  border:solid 1px $black;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+}
+
+.btn-back:hover {
+  background-color: black;
+  color: white;
+}
+
+.btn-black {
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.btn-black:hover {
+  color: white;
+  background-color: black;
+}

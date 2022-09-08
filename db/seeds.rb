@@ -8,11 +8,11 @@ User.destroy_all
 
 puts "Generating Users ..."
 
-user1 = User.create(email: "coco@gmail.com", first_name: "Corentin",  username: "corentinv", password: "123456", photo: "")
-user2 = User.create(email: "zach@gmail.com", first_name: "Zach",  username: "1zach", password: "123456", photo: "")
-user3 = User.create(email: "steph@gmail.com", first_name: "Stephane", username: "stephasme", password: "123456", photo: "")
-user4 = User.create(email: "tenzayn@gmail.com", first_name: "Tenzayn", username: "tenzayn", password: "123456", photo: "")
-User.create(email: "ambroise@gmail.com", first_name: "Ambroise", username: "ambbuck", password: "123456", photo: "")
+user1 = User.create(email: "coco@gmail.com", first_name: "Corentin",  username: "corentinv", password: "123456")
+user2 = User.create(email: "zach@gmail.com", first_name: "Zach",  username: "1zach", password: "123456")
+user3 = User.create(email: "steph@gmail.com", first_name: "Stephane", username: "stephasme", password: "123456")
+user4 = User.create(email: "tenzayn@gmail.com", first_name: "Tenzayn", username: "tenzayn", password: "123456")
+User.create(email: "ambroise@gmail.com", first_name: "Ambroise", username: "ambbuck", password: "123456")
 
 puts "#{User.all.count} users"
 
@@ -79,6 +79,26 @@ Photo.create(url: "https://images.unsplash.com/photo-1570939274717-7eda259b50ed?
   focal_length: "#{focal_array.sample}mm", creation_date_time: Date.today-rand(10000),
   camera: camera_array.sample, aperture: "f/#{rand(1..22)}",
   lens: camera_lens.sample, location: [48.858372,2.294481], user_id: user3.id)
+# Steph seeds
+Photo.create(url: "https://images.unsplash.com/photo-1568707950056-647f0c2fd17b",creator: user1.first_name,
+  focal_length: "#{focal_array.sample}mm", creation_date_time: Date.today-rand(10000),
+  camera: camera_array.sample, aperture: "f/#{rand(1..22)}",
+  lens: camera_lens.sample, location: [43.278740,3.514390], user_id: user1.id)
+
+Photo.create(url: "https://images.unsplash.com/photo-1513415564515-763d91423bdd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",creator: user2.first_name,
+  focal_length: "#{focal_array.sample}mm", creation_date_time: Date.today-rand(10000),
+  camera: camera_array.sample, aperture: "f/#{rand(1..22)}",
+  lens: camera_lens.sample, location: [22.396780,114.199410], user_id: user2.id)
+
+Photo.create(url: "https://images.unsplash.com/photo-1516590126735-bab76ef5967e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80",creator: user4.first_name,
+  focal_length: "#{focal_array.sample}mm", creation_date_time: Date.today-rand(10000),
+  camera: camera_array.sample, aperture: "f/#{rand(1..22)}",
+  lens: camera_lens.sample, location: [51.178883,-1.826215], user_id: user4.id)
+
+Photo.create(url: "https://images.unsplash.com/photo-1561036114-78189ef9a613?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80",creator: user3.first_name,
+  focal_length: "#{focal_array.sample}mm", creation_date_time: Date.today-rand(10000),
+  camera: camera_array.sample, aperture: "f/#{rand(1..22)}",
+  lens: camera_lens.sample, location: [38.052860,-84.730331], user_id: user3.id)
 
 # Photos of the fourth user
 Photo.create(url: "https://images.unsplash.com/photo-1461838239441-4475121c0b7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGJydXNzZWxzJTIwZ3JhbmQlMjBwbGFjZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",creator: user4.first_name,

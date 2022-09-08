@@ -1,22 +1,66 @@
 
 //CSS for the whole search box
 .search-box {
+  position: inline-block;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   gap: 10px;
   flex-direction: row;
-  background-color: $white;
+  background-color: rgba(255, 255, 255, 0.911);
   border-radius: 20px;
-
+  //transform: translateX(70vh) !important;
   //height: 15vh;
   box-shadow: $box-shadow;
   padding: 20px 40px;
-  position: absolute;
-  bottom: 77px;
+  //position: absolute;
+  //bottom: 310px;
+  //left: 81px;
   margin:0 auto;
   align-items: center;
   z-index: 100;
   font-family: 'Roboto Mono', monospace;
+  width: 750px;
+
+  
+
+  .form-control {
+    width: 150px;
+    background-color: $white;
+    border: 1px solid $slider;
+  }
+  
+
+  input[type=text]{
+    background-color: rgba(255, 255, 255, 0.6);
+    border: none
+  }
+  select {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: none;
+    color: $slider;
+  }
+
+  input[type=submit]{
+    //background: rgb(223,51,51);
+    //background: linear-gradient(9deg, rgba(223,51,51,1) 0%, rgba(253,45,45,1) 87%, rgba(236,126,126,1) 100%);
+    background: rgb(223,116,51);
+    background: linear-gradient(9deg, rgba(223,116,51,1) 0%, rgba(253,176,45,1) 87%, rgba(242,194,124,1) 100%);
+
+        border: none;
+    margin-left: 50px;
+    color: $slider;
+    border-radius: $border-radius;
+    padding: 0px 31px;
+    text-align: center;
+    line-height: normal;
+    font-size: 16px;
+    color: white;
+
+  }
+}
+
+#search-box {
+  zoom: 1.25;
 }
 
 #index-search-box {
@@ -28,14 +72,9 @@
   margin: 10px;
   padding: 20px 10px;
 
-  .form-control {
-    width: 100px;
-    background-color: inherit;
-  }
+  
 
-  .location-month {
-    align-items: center;
-  }
+ 
   .btn-black {
     padding: 5px 8px;
     border-radius: $border-radius;
@@ -43,7 +82,8 @@
   }
 
   .range-submit {
-    background-color: transparent
+    background-color: transparent;
+
   }
 }
 
@@ -55,7 +95,7 @@
   //position: absolute;
   //left: 10%;
   -ms-transform: translateY(10%);
-  transform: translateY(15%);
+  //transform: translateY(15%);
 }
 
 .fa-location-dot {
@@ -65,12 +105,16 @@
 
 .location-month {
   display:flex;
+  justify-content: space-around;
   flex-direction: row;
   gap: 5px;
+  align-items: center;
 }
 
 .range-submit {
   display:flex;
+  display:flex;
+  justify-content: space-around;
   flex-direction: row;
   gap: 5px;
 }
@@ -86,11 +130,7 @@
   width: 100px;
 }
 //Location box
-.form-control {
-  width: 150px;
-  background-color: $white;
-  border: 1px solid $slider;
-}
+
 
 .time-in-day input {
   margin: 5px;
@@ -99,6 +139,7 @@
   border-radius: 10px;
 }
 //button - currently white
+
 .btn-black {
   background-color: $white;
   color: $slider;
@@ -108,6 +149,7 @@
   line-height: normal;
   font-size: 16px;
   border: solid 1px $slider;
+  text-decoration: none;
 }
 
 .btn-black:hover {
@@ -123,6 +165,8 @@ input[type=range] {
 input[type=range]:focus {
   outline: none;
 }
+
+
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 12.8px;
@@ -212,19 +256,14 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .bubble {
-  background: $slider;
-  color: $white;
+  color: $slider;
   padding: 5px 6px;
- // position: absolute;
   border-radius: $border-radius;
   font-size: 12px;
   font-family: 'Roboto Mono', monospace;
   margin: 0 auto;
   text-align: center;
   display: inline-block;
-  //left: 50%;
-  //top: -20px;
-  //transform: translateX(-50%);
 }
 .bubble::after {
   content: "";
@@ -246,7 +285,7 @@ input[type=range]:focus::-ms-fill-upper {
     justify-content: center !important;
     height: 250px;
     gap: 0px;
-    transform: translateY(0px);
+    //transform: translateY(0px);
 
     .btn-black {
       align-self: center;
@@ -279,24 +318,24 @@ input[type=range]:focus::-ms-fill-upper {
   }
 }
 
-@media (max-width: 1200px) {
-  .search-box {
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: stretch;
+// @media (max-width: 1200px) {
+//   .search-box {
+//     flex-direction: column;
+//     justify-content: space-between;
+//     align-items: stretch;
 
-  }
+//   }
 
-  .range-submit {
-    display: flex;
-    justify-content: space-between;
-    gap: 50px;
-  }
+//   .range-submit {
+//     display: flex;
+//     justify-content: space-between;
+//     gap: 50px;
+//   }
 
-  .location-month {
-    display: flex;
-    justify-content: space-between;
-    gap: 50px;
-  }
+//   .location-month {
+//     display: flex;
+//     justify-content: space-between;
+//     gap: 50px;
+//   }
 
-}
+// }
