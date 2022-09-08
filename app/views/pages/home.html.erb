@@ -1,26 +1,11 @@
-<div class="banner">
-  <div class="container">
-    <h1>Catch Light</h1>
-    <p>Photographers need to understand the specific conditions under which they'll...</p>
-  </div>
-</div>
-<div class="container">
 
-  <div class="search-box"></div>
-    <h1>Pages#home</h1>
-    <p>Find me in app/views/pages/home.html.erb</p>
-    <%= form_with url: photos_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query_location,
-        params[:query_location],
-        class: "form-control",
-        placeholder: "Location"
-      %>
-      <%= text_field_tag :query_date,
-        params[:query_date],
-        class: "form-control",
-        placeholder: "DD/MM"
-      %>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
+<div class = "header">
+  
+    <%= render "pages/banner"%>
+  
+  <br>
+<%= render "shared/use-website" %>
+
+<%= render "shared/most_liked_pictures" %>
+
+<%# <%= render "shared/carousel" %>

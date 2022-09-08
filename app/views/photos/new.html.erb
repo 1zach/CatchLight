@@ -1,15 +1,73 @@
 <h1>Make a new photo</h1>
 
-<%= current_user.username%>
+<%= form_with model: @photo, local: true do |form| %>
 
-<%= simple_form_for(@photo) do |f| %>
+  <div data-controller="image-preview">
+    <img width='500px' style='display: none' src="#" data-image-preview-target="output">
 
-  <%= f.input :photo, as: :file %>
-  <%= f.input :creation_date_time %>
-  <%= f.input :focal_length %>
-  <%= f.input :camera %>
-  <%= f.input :aperture %>
-  <%= f.input :lens %>
-  <%= f.input :location %>
-  <%= f.button :submit %>
-<% end %>
+    <div class="my-2">
+      <%= form.file_field :photo,
+        :class => "form-control-file photo_upload",
+        data: {
+          image_preview_target: "input",
+          action: "image-preview#readURL"
+        } %>
+    </div>
+    <p style="color: red; display: none;" data-image-preview-target="warning">No location on this photo, it is not possible to upload it.</p>
+
+    <div class="my-2" style="display: none;">
+      <%= form.text_field :camera,
+        :class => "form-control-file photo_upload",
+        data: {
+          image_preview_target: "camera",
+          action: "image-preview#readURL"
+        } %>
+    </div>
+    <div class="my-2" style="display: none;">
+      <%= form.text_field :creation_date_time,
+        :class => "form-control-file photo_upload",
+        data: {
+          image_preview_target: "creation",
+          action: "image-preview#readURL"
+        } %>
+    </div>
+    <div class="my-2" style="display: none;">
+      <%= form.text_field :location,
+        :class => "form-control-file photo_upload",
+        data: {
+          image_preview_target: "location",
+          action: "image-preview#readURL"
+        } %>
+    </div>
+    <div class="my-2" style="display: none;">
+      <%= form.text_field :aperture,
+        :class => "form-control-file photo_upload",
+        data: {
+          image_preview_target: "aperture",
+          action: "image-preview#readURL"
+        } %>
+    </div>
+    <div class="my-2" style="display: none;">
+      <%= form.text_field :lens,
+        :class => "form-control-file photo_upload",
+        data: {
+          image_preview_target: "lens",
+          action: "image-preview#readURL"
+        } %>
+    </div>
+    <div class="my-2" style="display: none;">
+      <%= form.text_field :focal_length,
+        :class => "form-control-file photo_upload",
+        data: {
+          image_preview_target: "focal_length",
+          action: "image-preview#readURL"
+        } %>
+    </div>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+  <% end %>
+
+  <div style="height: 60vh;"></div>

@@ -1,13 +1,79 @@
-<% if @user.id == current_user.id%>
+<% if current_user.photos.count != 0 %>
 
-<h1><%= @user.username %></h1>
+    <div class="user-info-options">
+      <div class="user-info">
+        <%= render "shared/avatar" %>
+        <h1><%= @user.username %></h1>
+      </div>
+        <div class="user-show-buttons">
+          <%= link_to "Add a photo", new_photo_path(current_user),  class: "btn-black"%>
 
-<%= link_to "Add a photo", new_photo_path(current_user)%>
+          <%= link_to "Edit your profile", edit_user_registration_path(current_user),  class: "btn-black"%>
+        </div>
+    </div>
 
-<%= link_to "Edit your profile", edit_user_registration_path(current_user)%>
+  <div class="container">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1500630417200-63156e226754?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80)">
+      Your photos
+    </div>
+  </div>
 
-<% else%>
+  <div class="user-show-container">
+    <div class="col-12 col-lg-12">
+      <ul class = "image-user">
+        <% @user.photos.each do |photo| %>
+          <li>
+            <%= link_to photo_path(photo) do %>
+            <%=display_photo(photo)%>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 
-<p> You are not authorized to view this page</p>
 
-<%end%>
+  <div class="user-show-container">
+    <div class="container">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1500630417200-63156e226754?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80)">
+      Liked photos
+    </div>
+  </div>
+    <ul class = "image-user">
+      <% @user.favorites.each do |favorite| %>
+        <li>
+          <% photo = Photo.find(favorite.favoritable_id)%>
+           <%= link_to photo_path(photo) do %>
+          <%=display_photo(photo)%>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+
+  <% else %>
+    <div class="user-0-photos">
+    <%= render "shared/avatar" %>
+    <h1><%= @user.username %></h1>
+    <h2>add some picture to join the experience, share them with other creators. </h2>
+
+    <%= link_to "Add a photo", new_photo_path(current_user),  class: "btn-black"%>
+
+    <%= link_to "Edit your profile", edit_user_registration_path(current_user),  class: "btn-black"%>
+
+  <div class="user-show-container">
+    <h2>Liked photos</h2>
+    <ul class = "image-user">
+      <% @user.favorites.each do |favorite| %>
+        <li>
+          <% photo = Photo.find(favorite.favoritable_id)%>
+           <%= link_to photo_path(photo) do %>
+          <%=display_photo(photo)%>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
