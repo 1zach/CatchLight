@@ -41,12 +41,17 @@ class PhotosController < ApplicationController
 
     if params[:flickr]
       @photo = Photo.new(
+        id: params[:id],
         url: params[:url],
         focal_length: exif("Focal Length").nil? ? 'None' : exif("Focal Length").first,
         aperture: exif("Aperture").nil? ? 'None' : exif("Aperture").first,
         creation_date_time: exif("Date and Time (Original)").nil? ? 'None' : creation_date_time_formatter(exif("Date and Time (Original)").first),
         camera: exif("Model").nil? ? 'None' : exif("Model").first,
-        location: [params["latitude"], params["longitude"]]
+        location: [params["latitude"], params["longitude"]],
+        flickr: true,
+        latitude: params["latitude"],
+        longitude:  params["longitude"]
+
       )
       @markers = [
         {
@@ -137,7 +142,7 @@ class PhotosController < ApplicationController
 
     flickr_response.map do |flickr_photo|
       flickr_url = "https://live.staticflickr.com/#{flickr_photo.server}/#{flickr_photo.id}_#{flickr_photo.secret}.jpg"
-      Photo.new(
+      photo = Photo.new(
         id: flickr_photo.id,
         url: flickr_url,
         user: User.last,
@@ -147,8 +152,8 @@ class PhotosController < ApplicationController
         creation_date_time: flickr_photo.datetaken,
         creator: flickr_photo.ownername,
         flickr: true
-      )
-    end
+      )    
+end 
   end
 
   def get_flickr_additional_information(photo_id)
