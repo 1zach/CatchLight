@@ -3,8 +3,8 @@
     <p id = "img_gallery_text4"> <%=photo.creation_date_time.strftime("%I:%M%p")%></p>
   </div>
   <div class = "img_gallery_photo_hover_user">
+    <%= image_tag "#{photo.user.photo.key}", id: "img_gallery_text3"%>
     <p id= "img_gallery_text2"><%=photo.creator%></p>
-    <%= cl_image_tag "#{photo.user.photo.key}", id: "img_gallery_text3"%>
   </div>
 </div>
 <%= cl_image_tag photo.photo.key, height: 300, width: 400, crop: :fill, class: "img_gallery_photo" %>
